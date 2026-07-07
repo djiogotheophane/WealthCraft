@@ -1,0 +1,6 @@
+{
+  "name": "WealthCraft",
+  "description": "Plateforme d'investissement moderne, de récompenses, de parrainage et de retraits d'argent d'une élégance premium.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
