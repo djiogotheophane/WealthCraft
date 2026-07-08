@@ -12,6 +12,7 @@ export interface InvestmentAsset {
   performanceHistory: { date: string; value: number }[];
   dailyReturn?: number; // Optional daily return amount
   durationDays?: number; // Optional duration in days
+  imageUrl?: string;
 }
 
 export interface RewardTask {
@@ -55,6 +56,12 @@ export interface UserProfile {
   referralCode: string;
   totalReferralEarnings: number;
   totalRewardsClaimed: number;
-  tier: 'Bronze' | 'Silver' | 'Gold' | 'Diamond';
+  tier: 'Bronze' | 'Silver' | 'Gold' | 'Diamond' | string;
   investmentHistory: { [assetId: string]: number }; // assetId -> amount
+  fullName?: string;
+  spinsLeft?: number;
+  usedPromoCodes?: string[];
+  tasks?: RewardTask[];
+  transactions?: Transaction[];
+  referrals?: ReferredUser[];
 }

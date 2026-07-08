@@ -20,26 +20,27 @@ interface DashboardTabProps {
   onNavigate: (tab: string) => void;
   onOpenDeposit: () => void;
   onWinWheelPrize: (amount: number, label: string) => void;
+  spinsLeft: number;
+  setSpinsLeft: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SECTORS = [
-  { label: "500 F", value: 500, type: "cash", color: "#C9A86A", textColor: "#FFFDF8" },
-  { label: "1 500 F", value: 1500, type: "cash", color: "#1F1F1F", textColor: "#E6C687" },
-  { label: "2 000 F", value: 2000, type: "cash", color: "#FFFDF8", textColor: "#1F1F1F" },
-  { label: "700 F", value: 700, type: "cash", color: "#A05A2C", textColor: "#FFFDF8" },
-  { label: "15 000 F", value: 15000, type: "cash", color: "#D4AF37", textColor: "#1F1F1F" },
-  { label: "Recommencer", value: 0, type: "retry", color: "#F59E0B", textColor: "#FFFDF8" },
-  { label: "Perdu", value: 0, type: "lose", color: "#4B5563", textColor: "#FFFDF8" }
+  { label: "500 F", value: 500, type: "cash", color: "#E2C27A", textColor: "#242321" },
+  { label: "1 500 F", value: 1500, type: "cash", color: "#F5F3EE", textColor: "#C8A25D" },
+  { label: "2 000 F", value: 2000, type: "cash", color: "#242321", textColor: "#F5F3EE" },
+  { label: "700 F", value: 700, type: "cash", color: "#A05A2C", textColor: "#242321" },
+  { label: "15 000 F", value: 15000, type: "cash", color: "#D4AF37", textColor: "#F5F3EE" },
+  { label: "Recommencer", value: 0, type: "retry", color: "#F59E0B", textColor: "#242321" },
+  { label: "Perdu", value: 0, type: "lose", color: "#4B5563", textColor: "#242321" }
 ];
 
-export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWinWheelPrize }: DashboardTabProps) {
+export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWinWheelPrize, spinsLeft, setSpinsLeft }: DashboardTabProps) {
   const totalWealth = profile.balance + profile.investedBalance;
 
   // Wheel States
   const [rotation, setRotation] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinResult, setSpinResult] = useState<{ label: string; amount: number; type: string } | null>(null);
-  const [spinHistory, setSpinHistory] = useState<string[]>([]);
 
   // Simple formatter for Currency
   const formatEUR = (value: number) => {
@@ -47,14 +48,19 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
   };
 
   const handleSpinWheel = () => {
-    if (isSpinning) return;
+    if (isSpinning || spinsLeft <= 0) return;
 
     setIsSpinning(true);
     setSpinResult(null);
+    setSpinsLeft(prev => prev - 1);
 
-    // Pick a completely random sector from the 7 possibilities
-    const randomIndex = Math.floor(Math.random() * 7);
-    const sectorAngle = 360 / 7;
+    // Pick a completely random sector from the 7 possibilities but never the 15 000 F sector (value === 15000)
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * SECTORS.length);
+    } while (SECTORS[randomIndex].value === 15000);
+
+    const sectorAngle = 360 / SECTORS.length;
     
     // We want the wheel pointer (at 0 degrees / top) to align with the chosen sector
     // Sector center is at (randomIndex + 0.5) * sectorAngle
@@ -81,9 +87,6 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
 
       // Credit user's balance and post transaction ledger in parent state
       onWinWheelPrize(wonSector.value, wonSector.label);
-
-      // Append to local session history
-      setSpinHistory(prev => [wonSector.label, ...prev].slice(0, 5));
     }, 4000);
   };
 
@@ -95,34 +98,32 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
   return (
     <div className="space-y-8 animate-fade-in">
       {/* Welcome Banner Card */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#1F1F1F] via-[#2A2A2A] to-[#1F1F1F] text-white p-6 md:p-8 rounded-[24px] shadow-lg border border-[#C9A86A]/20">
-        <div className="absolute right-0 top-0 -mt-6 -mr-6 w-32 h-32 bg-[#C9A86A]/10 rounded-full blur-2xl"></div>
-        <div className="absolute left-1/3 bottom-0 w-24 h-24 bg-[#E6C687]/5 rounded-full blur-xl"></div>
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#F5F3EE] via-[#2A2A2A] to-[#F5F3EE] text-white p-6 md:p-8 rounded-[24px] shadow-lg border border-[#E2C27A]/20">
         
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 bg-[#C9A86A]/20 text-[#E6C687] text-xs font-semibold px-3 py-1 rounded-full border border-[#C9A86A]/30 mb-3">
+            <div className="inline-flex items-center gap-2 bg-[#E2C27A]/20 text-[#C8A25D] text-xs font-semibold px-3 py-1 rounded-full border border-[#E2C27A]/30 mb-3">
               <Award className="w-3.5 h-3.5" />
               Statut Elite • Membre {profile.tier}
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#FFFDF8] font-manrope">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#242321] font-manrope">
               Bonjour, {profile.name}
             </h2>
-            <p className="text-[#666666] text-sm mt-1 text-gray-300">
+            <p className="text-[#B8B2A8] text-sm mt-1 text-gray-300">
               Votre patrimoine se valorise au rythme de vos ambitions.
             </p>
           </div>
           <div className="flex gap-3">
             <button 
               onClick={onOpenDeposit}
-              className="bg-gradient-to-r from-[#E6C687] to-[#C9A86A] text-[#1F1F1F] font-semibold text-sm px-5 py-3 rounded-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 glow-btn cursor-pointer"
+              className="bg-gradient-to-r from-[#C8A25D] to-[#E2C27A] text-[#F5F3EE] font-semibold text-sm px-5 py-3 rounded-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 glow-btn cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               Déposer des fonds
             </button>
             <button 
               onClick={() => onNavigate('gagner')}
-              className="bg-[#FFFDF8]/10 text-white hover:bg-[#FFFDF8]/20 font-medium text-sm px-5 py-3 rounded-xl border border-white/10 transition-all cursor-pointer"
+              className="bg-[#242321]/10 text-white hover:bg-[#242321]/20 font-medium text-sm px-5 py-3 rounded-xl border border-white/10 transition-all cursor-pointer"
             >
               Investir
             </button>
@@ -135,27 +136,27 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
         {/* Stat 1: Total Wealth */}
         <div className="glass-card hover:shadow-md transition-all p-6 rounded-[24px] relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all">
-            <TrendingUp className="w-16 h-16 text-[#C9A86A]" />
+            <TrendingUp className="w-16 h-16 text-[#E2C27A]" />
           </div>
-          <p className="text-xs font-semibold text-[#666666] uppercase tracking-wider">Patrimoine Total</p>
-          <p className="text-2xl md:text-3xl font-extrabold text-[#1F1F1F] font-manrope mt-2">
+          <p className="text-xs font-semibold text-[#B8B2A8] uppercase tracking-wider">Patrimoine Total</p>
+          <p className="text-2xl md:text-3xl font-extrabold text-[#F5F3EE] font-manrope mt-2">
             {formatEUR(totalWealth)}
           </p>
-          <div className="mt-2 flex items-center gap-1.5 text-emerald-600 text-xs font-semibold">
-            <span className="bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">+8.4% ce mois</span>
+          <div className="mt-2 flex items-center gap-1.5 text-[#19B37A] text-xs font-semibold">
+            <span className="bg-[#19B37A]/10 px-2 py-0.5 rounded-full border border-[#19B37A]/20">+8.4% ce mois</span>
           </div>
         </div>
 
         {/* Stat 2: Active Investments */}
         <div className="glass-card hover:shadow-md transition-all p-6 rounded-[24px] relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all">
-            <Coins className="w-16 h-16 text-[#C9A86A]" />
+            <Coins className="w-16 h-16 text-[#E2C27A]" />
           </div>
-          <p className="text-xs font-semibold text-[#666666] uppercase tracking-wider">Fonds Investis</p>
-          <p className="text-2xl md:text-3xl font-extrabold text-[#1F1F1F] font-manrope mt-2">
+          <p className="text-xs font-semibold text-[#B8B2A8] uppercase tracking-wider">Fonds Investis</p>
+          <p className="text-2xl md:text-3xl font-extrabold text-[#F5F3EE] font-manrope mt-2">
             {formatEUR(profile.investedBalance)}
           </p>
-          <div className="mt-2 flex items-center gap-1.5 text-[#C9A86A] text-xs font-semibold">
+          <div className="mt-2 flex items-center gap-1.5 text-[#E2C27A] text-xs font-semibold">
             <span onClick={() => onNavigate('gagner')} className="cursor-pointer hover:underline flex items-center gap-1">
               Gérer le portefeuille <ChevronRight className="w-3.5 h-3.5" />
             </span>
@@ -165,14 +166,14 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
         {/* Stat 3: Available Balance */}
         <div className="glass-card hover:shadow-md transition-all p-6 rounded-[24px] relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all">
-            <Wallet className="w-16 h-16 text-[#C9A86A]" />
+            <Wallet className="w-16 h-16 text-[#E2C27A]" />
           </div>
-          <p className="text-xs font-semibold text-[#666666] uppercase tracking-wider">Solde Disponible</p>
-          <p className="text-2xl md:text-3xl font-extrabold text-[#1F1F1F] font-manrope mt-2">
+          <p className="text-xs font-semibold text-[#B8B2A8] uppercase tracking-wider">Solde Disponible</p>
+          <p className="text-2xl md:text-3xl font-extrabold text-[#F5F3EE] font-manrope mt-2">
             {formatEUR(profile.balance)}
           </p>
           <div className="mt-2 flex items-center gap-1.5 text-gray-500 text-xs font-semibold">
-            <span onClick={() => onNavigate('retrait')} className="cursor-pointer text-[#C9A86A] hover:underline flex items-center gap-1">
+            <span onClick={() => onNavigate('retrait')} className="cursor-pointer text-[#E2C27A] hover:underline flex items-center gap-1">
               Retirer ou transférer <ChevronRight className="w-3.5 h-3.5" />
             </span>
           </div>
@@ -181,13 +182,13 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
         {/* Stat 4: Referral & Rewards Earnings */}
         <div className="glass-card hover:shadow-md transition-all p-6 rounded-[24px] relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all">
-            <Gift className="w-16 h-16 text-[#C9A86A]" />
+            <Gift className="w-16 h-16 text-[#E2C27A]" />
           </div>
-          <p className="text-xs font-semibold text-[#666666] uppercase tracking-wider">Gains Parrainage</p>
-          <p className="text-2xl md:text-3xl font-extrabold text-[#1F1F1F] font-manrope mt-2">
+          <p className="text-xs font-semibold text-[#B8B2A8] uppercase tracking-wider">Gains Parrainage</p>
+          <p className="text-2xl md:text-3xl font-extrabold text-[#F5F3EE] font-manrope mt-2">
             {formatEUR(profile.totalReferralEarnings)}
           </p>
-          <div className="mt-2 flex items-center gap-1.5 text-[#C9A86A] text-xs font-semibold">
+          <div className="mt-2 flex items-center gap-1.5 text-[#E2C27A] text-xs font-semibold">
             <span onClick={() => onNavigate('inviter')} className="cursor-pointer hover:underline flex items-center gap-1">
               Voir vos filleuls <ChevronRight className="w-3.5 h-3.5" />
             </span>
@@ -196,19 +197,16 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
       </div>
 
       {/* Main Wheel of Fortune Section (Replacing Portfolio Chart and Recent Transactions) */}
-      <div className="glass-card p-6 md:p-8 rounded-[24px] border border-[#C9A86A]/20 relative overflow-hidden">
-        {/* Subtle decorative background lights */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A86A]/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#E6C687]/5 rounded-full blur-3xl"></div>
+      <div className="glass-card p-6 md:p-8 rounded-[24px] border border-[#E2C27A]/20 relative overflow-hidden">
 
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center space-y-6 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#C9A86A] bg-[#C9A86A]/10 px-3 py-1 rounded-full border border-[#C9A86A]/20 mb-3 animate-pulse">
+            <div className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#E2C27A] bg-[#E2C27A]/10 px-3 py-1 rounded-full border border-[#E2C27A]/20 mb-3 animate-pulse">
               <Sparkles className="w-3.5 h-3.5" />
               Lancement Exclusif WealthCraft
             </div>
-            <h3 className="text-2xl font-black text-[#1F1F1F] font-manrope tracking-tight">Roue de la Fortune d'Élite</h3>
-            <p className="text-xs text-[#666666] mt-1 max-w-md mx-auto">
+            <h3 className="text-2xl font-black text-[#F5F3EE] font-manrope tracking-tight">Roue de la Fortune d'Élite</h3>
+            <p className="text-xs text-[#B8B2A8] mt-1 max-w-md mx-auto">
               Tentez votre chance sur notre roue premium pour remporter des primes exceptionnelles ajoutées directement à votre capital d'investissement.
             </p>
           </div>
@@ -216,8 +214,8 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
           {/* Interactive Wheel Graphic Container */}
           <div className="relative w-[320px] h-[320px] flex items-center justify-center select-none my-4">
             {/* Outer Glowing Golden Rim with decorative dots */}
-            <div className="absolute inset-0 rounded-full border-4 border-[#C9A86A] shadow-xl bg-gradient-to-b from-[#FFFDF8] to-[#F3EDE0] flex items-center justify-center">
-              <div className="absolute inset-2 rounded-full border border-[#C9A86A]/40"></div>
+            <div className="absolute inset-0 rounded-full border-4 border-[#E2C27A] shadow-xl bg-gradient-to-b from-[#242321] to-[#F3EDE0] flex items-center justify-center">
+              <div className="absolute inset-2 rounded-full border border-[#E2C27A]/40"></div>
               
               {/* Outer rim decorative marker dots */}
               {[...Array(14)].map((_, idx) => {
@@ -231,7 +229,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
                     style={{ left: `${x}px`, top: `${y}px` }}
                     className={`absolute w-1.5 h-1.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-inner ${
                       isSpinning && idx % 2 === Math.floor(Date.now() / 200) % 2 
-                        ? 'bg-[#E6C687] scale-125' 
+                        ? 'bg-[#C8A25D] scale-125' 
                         : 'bg-amber-400'
                     }`}
                   ></div>
@@ -242,7 +240,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
             {/* Pointer / Arrow Indicator at the very top */}
             <div className="absolute -top-1.5 z-30 filter drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] pointer-events-none">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" className="transform rotate-180">
-                <path d="M15 25L5 8H25L15 25Z" fill="#C9A86A" stroke="#1F1F1F" strokeWidth="2" strokeLinejoin="miter" />
+                <path d="M15 25L5 8H25L15 25Z" fill="#E2C27A" stroke="#F5F3EE" strokeWidth="2" strokeLinejoin="miter" />
               </svg>
             </div>
 
@@ -285,7 +283,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
                         <path 
                           d={pathStr} 
                           fill={sector.color} 
-                          stroke="#C9A86A" 
+                          stroke="#E2C27A" 
                           strokeWidth="1.5"
                         />
                         {/* Sector Text Label */}
@@ -308,13 +306,13 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
                 </g>
                 
                 {/* Outer concentric divider line */}
-                <circle cx={cx} cy={cy} r={R} fill="none" stroke="#C9A86A" strokeWidth="2" />
+                <circle cx={cx} cy={cy} r={R} fill="none" stroke="#E2C27A" strokeWidth="2" />
               </svg>
             </div>
 
             {/* Inner Golden Center Hub */}
-            <div className="absolute z-20 w-11 h-11 rounded-full bg-[#1F1F1F] border-2 border-[#C9A86A] flex items-center justify-center shadow-lg pointer-events-none">
-              <span className="text-[10px] font-black text-[#E6C687] tracking-wider font-manrope">WC</span>
+            <div className="absolute z-20 w-11 h-11 rounded-full bg-[#1A1917] border-2 border-[#E2C27A] flex items-center justify-center shadow-lg pointer-events-none">
+              <span className="text-[10px] font-black text-[#C8A25D] tracking-wider font-manrope">WC</span>
               <div className="absolute inset-0 rounded-full border border-white/10 animate-ping opacity-25"></div>
             </div>
           </div>
@@ -323,69 +321,72 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
           <div className="w-full max-w-sm space-y-4 pt-2">
             <button 
               onClick={handleSpinWheel}
-              disabled={isSpinning}
+              disabled={isSpinning || spinsLeft <= 0}
               className={`w-full py-4 rounded-2xl font-black text-sm uppercase tracking-wider shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2.5 cursor-pointer ${
                 isSpinning 
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
-                  : 'bg-gradient-to-r from-[#E6C687] via-[#C9A86A] to-[#E6C687] hover:brightness-105 hover:shadow-xl text-[#1F1F1F] glow-btn'
+                  : spinsLeft <= 0
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-60'
+                  : 'bg-gradient-to-r from-[#C8A25D] via-[#E2C27A] to-[#C8A25D] hover:brightness-105 hover:shadow-xl text-[#F5F3EE] glow-btn'
               }`}
             >
               <RotateCw className={`w-4.5 h-4.5 ${isSpinning ? 'animate-spin' : ''}`} />
-              {isSpinning ? "Spécification de l'or..." : "Tourner la roue"}
+              {isSpinning 
+                ? "Spécification de l'or..." 
+                : spinsLeft <= 0 
+                  ? "Tours Épuisés" 
+                  : `Tourner la roue (${spinsLeft} restants)`
+              }
             </button>
 
             {/* Dynamic Spin Result Notice */}
             {spinResult && (
-              <div className="p-4 rounded-xl border animate-fade-in bg-[#FFFDF8]">
+              <div className="p-4 rounded-xl border border-[#E2C27A]/20 animate-fade-in bg-[#242321]">
                 {spinResult.type === 'cash' && (
                   <div className="flex flex-col items-center space-y-1">
-                    <Trophy className="w-7 h-7 text-[#C9A86A] animate-bounce" />
-                    <p className="text-xs text-[#666666] font-semibold">Félicitations !</p>
-                    <p className="text-sm font-black text-emerald-600 font-manrope">
+                    <Trophy className="w-7 h-7 text-[#E2C27A] animate-bounce" />
+                    <p className="text-xs text-[#B8B2A8] font-semibold">Félicitations !</p>
+                    <p className="text-sm font-black text-[#19B37A] font-manrope">
                       Vous avez gagné {spinResult.label} !
                     </p>
-                    <p className="text-[10px] text-gray-500">
+                    <p className="text-[10px] text-[#B8B2A8] text-center">
                       Un montant équivalent de {formatEUR(spinResult.amount)} a été ajouté à votre solde disponible.
                     </p>
                   </div>
                 )}
                 {spinResult.type === 'retry' && (
-                  <div className="flex flex-col items-center space-y-1 text-amber-600">
-                    <RotateCw className="w-6 h-6 animate-spin" />
+                  <div className="flex flex-col items-center space-y-1 text-amber-400">
+                    <RotateCw className="w-6 h-6 animate-spin text-[#E2C27A]" />
                     <p className="text-xs font-semibold">Relance gratuite !</p>
                     <p className="text-sm font-black font-manrope">Vous obtenez un tour supplémentaire.</p>
                   </div>
                 )}
                 {spinResult.type === 'lose' && (
-                  <div className="flex flex-col items-center space-y-1 text-gray-500">
-                    <Info className="w-6 h-6 text-gray-400" />
+                  <div className="flex flex-col items-center space-y-1 text-[#B8B2A8]">
+                    <Info className="w-6 h-6 text-[#E2C27A]" />
                     <p className="text-xs font-semibold">Pas de chance cette fois</p>
-                    <p className="text-sm font-bold font-manrope">Perdu ! Retentez votre chance !</p>
+                    <p className="text-sm font-bold font-manrope text-[#F5F3EE]">Perdu ! Retentez votre chance !</p>
                   </div>
                 )}
               </div>
             )}
 
-            {/* Quick Session History */}
-            {spinHistory.length > 0 && (
-              <div className="text-center pt-2">
-                <p className="text-[10px] uppercase font-bold tracking-widest text-[#666666]">Derniers résultats</p>
-                <div className="flex justify-center gap-1.5 mt-2 overflow-x-auto py-1">
-                  {spinHistory.map((hist, index) => (
-                    <span 
-                      key={index} 
-                      className={`text-[9px] px-2 py-0.5 rounded font-black border uppercase tracking-wider shrink-0 ${
-                        hist.includes('Perdu') 
-                          ? 'bg-gray-100 border-gray-200 text-gray-500' 
-                          : hist.includes('Recommencer') 
-                            ? 'bg-amber-50 border-amber-200 text-amber-700' 
-                            : 'bg-emerald-50 border-emerald-100 text-emerald-700'
-                      }`}
-                    >
-                      {hist}
-                    </span>
-                  ))}
+            {/* Expiry / Refill Notice */}
+            {spinsLeft <= 0 && !isSpinning && (
+              <div className="p-4 rounded-xl border border-[#E2C27A]/25 bg-[#242321] text-[#F5F3EE] text-xs font-bold leading-relaxed text-center space-y-2 animate-fade-in">
+                <div className="flex items-center justify-center gap-1.5 text-[#E2C27A]">
+                  <Sparkles className="w-4 h-4 animate-pulse" />
+                  <span className="uppercase tracking-wider text-[10px] font-black">Primes Épuisées</span>
                 </div>
+                <p>
+                  Pour un investissement de <strong className="text-[#19B37A]">500 F CFA</strong>, vous recevez <strong className="text-[#E2C27A]">5 autres tours</strong> !
+                </p>
+                <button
+                  onClick={() => onNavigate('gagner')}
+                  className="mt-1.5 inline-flex items-center gap-1 bg-[#E2C27A] text-[#1A1917] hover:bg-[#C8A25D] hover:text-[#1A1917] text-[10px] font-extrabold uppercase px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+                >
+                  Investir maintenant
+                </button>
               </div>
             )}
           </div>

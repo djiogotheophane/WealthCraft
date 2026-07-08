@@ -9,37 +9,37 @@
 /* Custom styling for premium gold shine and glassmorphism */
 @layer utilities {
   .gold-gradient {
-    background: linear-gradient(135deg, #E6C687 0%, #C9A86A 50%, #B08F51 100%);
+    background: linear-gradient(135deg, #C8A25D 0%, #E2C27A 50%, #A38243 100%);
   }
   
   .gold-text-gradient {
-    background: linear-gradient(135deg, #E6C687 0%, #C9A86A 100%);
+    background: linear-gradient(135deg, #E2C27A 0%, #C8A25D 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
   .glass-card {
-    background: rgba(255, 253, 248, 0.65);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(201, 168, 106, 0.15);
+    background: #242321;
+    border: 1px solid rgba(226, 194, 122, 0.15);
+    color: #F5F3EE;
   }
   
   .glass-card-dark {
-    background: rgba(31, 31, 31, 0.85);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(201, 168, 106, 0.25);
+    background: #1A1917;
+    border: 1px solid rgba(226, 194, 122, 0.25);
+    color: #F5F3EE;
   }
 
   .glow-btn:hover {
-    box-shadow: 0 0 15px rgba(201, 168, 106, 0.4);
+    box-shadow: 0 0 15px rgba(226, 194, 122, 0.4);
   }
 }
 
 /* Base style resets and customizations */
 body {
   font-family: var(--font-sans);
-  background-color: #F8F3EA;
-  color: #1F1F1F;
+  background-color: #1A1917;
+  color: #F5F3EE;
 }
 
 /* Custom scrollbars */
@@ -48,13 +48,12 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8F3EA;
+  background: #1A1917;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C9A86A;
+  background: #E2C27A;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B08F51;
+  background: #C8A25D;
 }
-

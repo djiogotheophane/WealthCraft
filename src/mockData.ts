@@ -19,7 +19,8 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
       { date: 'Jour 7', value: 5600 }
     ],
     dailyReturn: 800,
-    durationDays: 7
+    durationDays: 7,
+    imageUrl: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'lvl-standard-2',
@@ -38,7 +39,8 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
       { date: 'Jour 8', value: 12000 }
     ],
     dailyReturn: 1500,
-    durationDays: 8
+    durationDays: 8,
+    imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'lvl-standard-3',
@@ -57,7 +59,8 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
       { date: 'Jour 6', value: 12000 }
     ],
     dailyReturn: 2000,
-    durationDays: 6
+    durationDays: 6,
+    imageUrl: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'lvl-standard-4',
@@ -76,7 +79,8 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
       { date: 'Jour 5', value: 15000 }
     ],
     dailyReturn: 3000,
-    durationDays: 5
+    durationDays: 5,
+    imageUrl: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'lvl-standard-5',
@@ -95,7 +99,8 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
       { date: 'Jour 5', value: 22500 }
     ],
     dailyReturn: 4500,
-    durationDays: 5
+    durationDays: 5,
+    imageUrl: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'lvl-premium-1',
@@ -114,7 +119,8 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
       { date: 'Jour 10', value: 55000 }
     ],
     dailyReturn: 5500,
-    durationDays: 10
+    durationDays: 10,
+    imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'lvl-premium-2',
@@ -133,7 +139,8 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
       { date: 'Jour 10', value: 75000 }
     ],
     dailyReturn: 7500,
-    durationDays: 10
+    durationDays: 10,
+    imageUrl: 'https://images.unsplash.com/photo-1618042164219-62c820f10723?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'lvl-premium-3',
@@ -152,7 +159,8 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
       { date: 'Jour 10', value: 105000 }
     ],
     dailyReturn: 10500,
-    durationDays: 10
+    durationDays: 10,
+    imageUrl: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'
   }
 ];
 

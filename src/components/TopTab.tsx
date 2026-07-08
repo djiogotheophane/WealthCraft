@@ -40,12 +40,12 @@ export default function TopTab({ profile }: TopTabProps) {
     <div className="space-y-8 animate-fade-in">
       {/* Page Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#C9A86A] bg-[#C9A86A]/10 px-3 py-1 rounded-full border border-[#C9A86A]/20 mb-3">
+        <div className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#E2C27A] bg-[#E2C27A]/10 px-3 py-1 rounded-full border border-[#E2C27A]/20 mb-3">
           <Sparkles className="w-3.5 h-3.5" />
           Club Privé WealthCraft
         </div>
-        <h2 className="text-2xl md:text-3xl font-black text-[#1F1F1F] font-manrope tracking-tight">Le Cercle d'Or</h2>
-        <p className="text-xs text-[#666666] mt-1 max-w-xl">
+        <h2 className="text-2xl md:text-3xl font-black text-[#F5F3EE] font-manrope tracking-tight">Le Cercle d'Or</h2>
+        <p className="text-xs text-[#B8B2A8] mt-1 max-w-xl">
           Découvrez les classements des plus grands investisseurs de notre plateforme d'élite et les performances historiques de nos meilleurs actifs de co-investissement.
         </p>
       </div>
@@ -53,11 +53,11 @@ export default function TopTab({ profile }: TopTabProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Leaderboard (2 cols on large screen) */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="glass-card p-6 md:p-8 rounded-[24px] border border-[#C9A86A]/15">
-            <div className="flex justify-between items-center border-b border-[#C9A86A]/10 pb-4 mb-6">
+          <div className="glass-card p-6 md:p-8 rounded-[24px] border border-[#E2C27A]/15">
+            <div className="flex justify-between items-center border-b border-[#E2C27A]/10 pb-4 mb-6">
               <div className="flex items-center gap-2">
-                <Trophy className="w-5 h-5 text-[#C9A86A]" />
-                <h3 className="font-extrabold text-base text-[#1F1F1F] font-manrope">Classement des Investisseurs</h3>
+                <Trophy className="w-5 h-5 text-[#E2C27A]" />
+                <h3 className="font-extrabold text-base text-[#F5F3EE] font-manrope">Classement des Investisseurs</h3>
               </div>
               <span className="text-[10px] uppercase font-bold text-gray-500">Mis à jour en temps réel</span>
             </div>
@@ -67,13 +67,13 @@ export default function TopTab({ profile }: TopTabProps) {
               {LEADERBOARD_MEMBERS.map((member) => (
                 <div 
                   key={member.rank}
-                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 rounded-2xl bg-[#FFFDF8] border border-[#C9A86A]/10 hover:border-[#C9A86A]/30 transition-all gap-3"
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 rounded-2xl bg-[#242321] border border-[#E2C27A]/10 hover:border-[#E2C27A]/30 transition-all gap-3"
                 >
                   <div className="flex items-center gap-4">
                     {/* Rank Badge */}
                     <div className={`w-9 h-9 rounded-xl font-black font-manrope text-xs flex items-center justify-center shrink-0 ${
-                      member.rank === 1 ? 'bg-amber-400 text-[#1F1F1F]' :
-                      member.rank === 2 ? 'bg-slate-300 text-[#1F1F1F]' :
+                      member.rank === 1 ? 'bg-amber-400 text-[#F5F3EE]' :
+                      member.rank === 2 ? 'bg-slate-300 text-[#F5F3EE]' :
                       member.rank === 3 ? 'bg-amber-700 text-white' : 'bg-gray-100 text-gray-600'
                     }`}>
                       #{member.rank}
@@ -81,8 +81,8 @@ export default function TopTab({ profile }: TopTabProps) {
 
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-extrabold text-[#1F1F1F]">{member.name}</span>
-                        <span className="text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full bg-[#C9A86A]/10 text-[#C9A86A]">
+                        <span className="text-xs font-extrabold text-[#F5F3EE]">{member.name}</span>
+                        <span className="text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full bg-[#E2C27A]/10 text-[#E2C27A]">
                           {member.tier}
                         </span>
                       </div>
@@ -93,13 +93,9 @@ export default function TopTab({ profile }: TopTabProps) {
                   <div className="flex items-center justify-between sm:justify-end gap-6 border-t sm:border-t-0 pt-2 sm:pt-0 border-gray-100">
                     <div className="text-left sm:text-right">
                       <p className="text-[9px] uppercase tracking-wider text-gray-400">Patrimoine</p>
-                      <p className="text-xs font-black text-[#1F1F1F]">
+                      <p className="text-xs font-black text-[#F5F3EE]">
                         {member.totalWealth.toLocaleString('fr-FR')} F CFA
                       </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-[9px] uppercase tracking-wider text-gray-400">Rendement Moyen</p>
-                      <p className="text-xs font-extrabold text-emerald-600">{member.yieldRate}</p>
                     </div>
                   </div>
                 </div>
@@ -107,16 +103,16 @@ export default function TopTab({ profile }: TopTabProps) {
 
               {/* User's position inside the Leaderboard (Simulated rank #14) */}
               <div 
-                className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-5 rounded-[20px] bg-gradient-to-r from-[#1F1F1F] to-[#2A2A2A] text-white border-2 border-[#C9A86A]/50 shadow-lg gap-3"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-5 rounded-[20px] bg-gradient-to-r from-[#F5F3EE] to-[#2A2A2A] text-white border-2 border-[#E2C27A]/50 shadow-lg gap-3"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-9 h-9 rounded-xl bg-[#C9A86A] text-[#1F1F1F] font-black font-manrope text-xs flex items-center justify-center shrink-0 animate-pulse">
+                  <div className="w-9 h-9 rounded-xl bg-[#E2C27A] text-[#F5F3EE] font-black font-manrope text-xs flex items-center justify-center shrink-0 animate-pulse">
                     #14
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-extrabold text-[#FFFDF8]">{profile.name} (Vous)</span>
-                      <span className="text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full bg-[#C9A86A] text-[#1F1F1F]">
+                      <span className="text-xs font-extrabold text-[#242321]">{profile.name} (Vous)</span>
+                      <span className="text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full bg-[#E2C27A] text-[#F5F3EE]">
                         {profile.tier}
                       </span>
                     </div>
@@ -127,13 +123,13 @@ export default function TopTab({ profile }: TopTabProps) {
                 <div className="flex items-center justify-between sm:justify-end gap-6 border-t border-white/10 pt-2 sm:pt-0">
                   <div className="text-left sm:text-right">
                     <p className="text-[9px] uppercase tracking-wider text-gray-400">Patrimoine WealthCraft</p>
-                    <p className="text-xs font-black text-[#C9A86A]">
+                    <p className="text-xs font-black text-[#E2C27A]">
                       {userTotalWealth.toLocaleString('fr-FR')} F CFA
                     </p>
                   </div>
                   <div className="text-right">
                     <p className="text-[9px] uppercase tracking-wider text-gray-400">Rendement Prévu</p>
-                    <p className="text-xs font-extrabold text-emerald-400">11.2% p.a.</p>
+                    <p className="text-xs font-extrabold text-[#19B37A]">11.2% p.a.</p>
                   </div>
                 </div>
               </div>
@@ -145,35 +141,35 @@ export default function TopTab({ profile }: TopTabProps) {
         {/* Right Column: Top Performance projects */}
         <div className="space-y-6">
           {/* Top Projects Card */}
-          <div className="glass-card p-6 rounded-[24px] border border-[#C9A86A]/15 space-y-5">
-            <div className="flex items-center gap-2 border-b border-[#C9A86A]/10 pb-3">
-              <TrendingUp className="w-4.5 h-4.5 text-[#C9A86A]" />
-              <h4 className="font-extrabold text-sm text-[#1F1F1F] font-manrope">Actifs d'Exception</h4>
+          <div className="glass-card p-6 rounded-[24px] border border-[#E2C27A]/15 space-y-5">
+            <div className="flex items-center gap-2 border-b border-[#E2C27A]/10 pb-3">
+              <TrendingUp className="w-4.5 h-4.5 text-[#E2C27A]" />
+              <h4 className="font-extrabold text-sm text-[#F5F3EE] font-manrope">Actifs d'Exception</h4>
             </div>
 
-            <p className="text-[11px] text-[#666666] leading-relaxed">
+            <p className="text-[11px] text-[#B8B2A8] leading-relaxed">
               Voici le palmarès de nos transactions de co-investissement fermées ayant généré les plus fortes valeurs ajoutées.
             </p>
 
             <div className="space-y-3">
               {TOP_PROJECTS.map((proj, idx) => (
-                <div key={idx} className="p-4 rounded-xl bg-[#FFFDF8] border border-[#C9A86A]/5 space-y-2">
+                <div key={idx} className="p-4 rounded-xl bg-[#242321] border border-[#E2C27A]/5 space-y-2">
                   <div className="flex justify-between items-start">
                     <div>
-                      <p className="text-xs font-black text-[#1F1F1F]">{proj.name}</p>
-                      <p className="text-[9px] text-[#666666] mt-0.5">{proj.category}</p>
+                      <p className="text-xs font-black text-[#F5F3EE]">{proj.name}</p>
+                      <p className="text-[9px] text-[#B8B2A8] mt-0.5">{proj.category}</p>
                     </div>
-                    <span className="text-[8px] uppercase tracking-wider font-bold bg-emerald-50 text-emerald-800 border border-emerald-100 px-1.5 py-0.5 rounded">
+                    <span className="text-[8px] uppercase tracking-wider font-bold bg-[#19B37A]/10 text-[#19B37A] border border-[#19B37A]/20 px-1.5 py-0.5 rounded">
                       {proj.status}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center text-[10px] pt-1 border-t border-[#C9A86A]/5">
-                    <span className="text-[#666666]">Co-investisseurs:</span>
-                    <span className="font-bold text-gray-800">{proj.backers}</span>
+                  <div className="flex justify-between items-center text-[10px] pt-1 border-t border-[#E2C27A]/5">
+                    <span className="text-[#B8B2A8]">Co-investisseurs:</span>
+                    <span className="font-bold text-[#F5F3EE]">{proj.backers}</span>
                   </div>
                   <div className="flex justify-between items-center text-[10px]">
-                    <span className="text-[#666666]">Rendement :</span>
-                    <span className="font-extrabold text-emerald-600">{proj.yield}</span>
+                    <span className="text-[#B8B2A8]">Rendement :</span>
+                    <span className="font-extrabold text-[#19B37A]">{proj.yield}</span>
                   </div>
                 </div>
               ))}
@@ -181,14 +177,14 @@ export default function TopTab({ profile }: TopTabProps) {
           </div>
 
           {/* Member Privileges Card */}
-          <div className="glass-card p-6 rounded-[24px] bg-[#1F1F1F] text-white space-y-4 border border-[#C9A86A]/30">
-            <h4 className="text-xs font-black text-[#E6C687] uppercase tracking-wider flex items-center gap-1.5">
+          <div className="glass-card p-6 rounded-[24px] bg-[#1A1917] text-white space-y-4 border border-[#E2C27A]/30">
+            <h4 className="text-xs font-black text-[#C8A25D] uppercase tracking-wider flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4" /> Garantie Club d'Élite
             </h4>
             <p className="text-[10px] text-gray-300 leading-relaxed">
               Les membres de l'élite WealthCraft bénéficient d'un accès anticipé de 48 heures sur tous les futurs lancements de projets d'actifs réels de luxe.
             </p>
-            <div className="flex items-center gap-2 text-[10px] text-[#C9A86A] font-extrabold cursor-pointer hover:underline">
+            <div className="flex items-center gap-2 text-[10px] text-[#E2C27A] font-extrabold cursor-pointer hover:underline">
               <span>Lire le règlement général du club</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </div>

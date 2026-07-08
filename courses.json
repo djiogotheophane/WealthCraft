@@ -1,0 +1,428 @@
+[
+  {
+    "id": "crypto",
+    "domain": "💰 Crypto-monnaies",
+    "title": "Crypto-monnaies & Actifs Numériques d'Élite",
+    "description": "Comprenez les registres distribués, la finance décentralisée (DeFi), la tokenisation d'actifs physiques de prestige et bâtissez un portefeuille crypto souverain.",
+    "levels": [
+      {
+        "id": "crypto-beginner",
+        "name": "Niveau Débutant",
+        "lessons": [
+          {
+            "id": "crypto-b1",
+            "title": "Introduction à la Blockchain et au Bitcoin",
+            "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "duration": 5,
+            "text": "La blockchain est un registre numérique partagé, immuable et décentralisé qui facilite le processus d'enregistrement des transactions et de suivi des actifs dans un réseau professionnel. Le Bitcoin, créé en 2009 par l'entité anonyme Satoshi Nakamoto, est la toute première application réussie de cette technologie. Contrairement aux monnaies fiduciaires traditionnelles (comme l'Euro ou le Dollar F CFA) émises par des banques centrales, le Bitcoin fonctionne sans autorité centrale. Sa rareté numérique est absolue : il n'y aura jamais plus de 21 millions de Bitcoins en circulation.",
+            "example": "Imaginez un livre de comptes physique que tout le monde possède en copie parfaite dans sa bibliothèque. Si quelqu'un tente d'en altérer une page pour s'attribuer de l'argent indûment, le reste de la communauté compare sa version et rejette instantanément la fraude.",
+            "advice": "Pour débuter, privilégiez toujours la compréhension de la technologie plutôt que la spéculation sur les prix. Conservez vos actifs dans des portefeuilles matériels autonomes (Cold Wallets).",
+            "quiz": {
+              "question": "Combien de Bitcoins existeront au maximum dans l'histoire de ce protocole ?",
+              "options": [
+                "21 Millions de jetons",
+                "100 Millions de jetons",
+                "Il n'y a aucune limite d'émission",
+                "210 Millions de jetons"
+              ],
+              "answerIndex": 0
+            }
+          },
+          {
+            "id": "crypto-b2",
+            "title": "Ethereum, Contrats Intelligents et Tokenisation de Prestige",
+            "videoUrl": "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+            "duration": 5,
+            "text": "Lancé en 2015 par Vitalik Buterin, Ethereum a introduit le concept révolutionnaire de 'smart contracts' (contrats intelligents). Ces morceaux de code s'exécutent de façon autonome et transparente sur la blockchain dès lors que des critères préétablis sont validés. C'est grâce à ces smart contracts que l'on peut aujourd'hui 'tokeniser' des actifs du monde réel (comme l'art, les parts de yachts ou de villas d'exception chez WealthCraft). En fractionnant ces biens sous forme de jetons numériques, nous démocratisons l'accès au luxe.",
+            "example": "Un smart contract immobilier de WealthCraft distribue automatiquement les revenus locatifs mensuels aux détenteurs d'une part de villa, proportionnellement au nombre de jetons détenus dans leur portefeuille.",
+            "advice": "Vérifiez toujours l'audit de sécurité d'un smart contract avant d'y engager des fonds importants. La transparence du code est votre meilleure protection.",
+            "quiz": {
+              "question": "Qu'est-ce qu'un Smart Contract ?",
+              "options": [
+                "Un contrat écrit signé chez un notaire physique",
+                "Un programme informatique auto-exécutable hébergé sur une blockchain",
+                "Un mot de passe ultra-sécurisé pour protéger un compte bancaire",
+                "Un accord verbal entre deux négociants d'art d'élite"
+              ],
+              "answerIndex": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "crypto-intermediate",
+        "name": "Niveau Intermédiaire",
+        "lessons": [
+          {
+            "id": "crypto-i1",
+            "title": "La Finance Décentralisée (DeFi) et le Yield Farming",
+            "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "duration": 5,
+            "text": "La DeFi (Finance Décentralisée) reproduit les services financiers traditionnels (prêts, emprunts, échanges d'actifs, assurances) de manière ouverte, sans intermédiaire. En éliminant les intermédiaires bancaires coûteux, les protocoles de DeFi peuvent redistribuer les frais directement aux apporteurs de liquidité sous forme de rendements élevés (le Yield Farming). Les stablecoins (comme l'USDT ou l'USDC), indexés sur le dollar américain, jouent un rôle pivot pour éviter la volatilité.",
+            "example": "En fournissant des liquidités stables à une plateforme comme Uniswap ou Aave, vous gagnez des frais de transaction et des intérêts en temps réel, agissant vous-même comme une micro-banque.",
+            "advice": "Le Yield Farming comporte des risques comme la 'perte impermanente' ou des failles de protocoles. Ne visez pas les rendements irréalistes à 4 chiffres.",
+            "quiz": {
+              "question": "Quel jeton numérique maintient généralement une valeur stable de 1 dollar ?",
+              "options": [
+                "Le Bitcoin (BTC)",
+                "L'Ethereum (ETH)",
+                "L'USDT (Tether Stablecoin)",
+                "Le Dogecoin (DOGE)"
+              ],
+              "answerIndex": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "crypto-advanced",
+        "name": "Niveau Avancé",
+        "lessons": [
+          {
+            "id": "crypto-a1",
+            "title": "Tokenisation d'Actifs Réels (RWA) et Cadres Réglementaires",
+            "videoUrl": "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+            "duration": 5,
+            "text": "La tokenisation d'actifs réels (Real World Assets - RWA) est la convergence ultime de la finance traditionnelle et de la blockchain. Elle consiste à adosser des jetons sur une blockchain à des droits de propriété réels sur des obligations souveraines, des métaux précieux ou de l'immobilier d'élite. Les géants de Wall Street comme BlackRock déploient désormais des fonds entièrement tokenisés sur Ethereum. Le respect des régulations (comme MiCA en Europe ou les règles de la FINMA suisse) assure la pérennité juridique de ces représentations numériques.",
+            "example": "WealthCraft utilise des structures juridiques suisses où la détention de jetons correspond légalement à une créance participative sur la société détentrice de l'actif immobilier.",
+            "advice": "N'achetez jamais un jeton RWA dont la société émettrice n'est pas régulée ou n'a pas fait l'objet d'un audit de conformité rigoureux.",
+            "quiz": {
+              "question": "Quelle autorité de régulation suisse encadre les activités financières de WealthCraft ?",
+              "options": [
+                "La SEC américaine",
+                "La FINMA suisse",
+                "La Banque Centrale Européenne",
+                "Le Ministère des Finances de Paris"
+              ],
+              "answerIndex": 1
+            }
+          }
+        ]
+      }
+    ],
+    "finalQuiz": {
+      "title": "Grand Quiz de Certification Crypto",
+      "questions": [
+        {
+          "question": "Quelle caractéristique rend le Bitcoin immuable ?",
+          "options": [
+            "La puissance de calcul décentralisée (Proof of Work) de son réseau",
+            "L'approbation manuelle des transactions par son créateur Satoshi",
+            "La signature d'un contrat par les grandes banques de Genève",
+            "La mise à jour de son code secret chaque matin"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "question": "Sur quelle blockchain sont principalement hébergés les jetons de copropriété de prestige ?",
+          "options": [
+            "Sur une base de données MySQL classique",
+            "Sur la blockchain Ethereum à travers des contrats intelligents",
+            "Sur le protocole de paiement de Western Union",
+            "Sur un canal de discussion crypté"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "question": "Que signifie l'acronyme RWA dans l'écosystème financier moderne ?",
+          "options": [
+            "Real World Assets (Actifs du monde réel)",
+            "Rich Wealth Association",
+            "Royal Wine Agency",
+            "Risk Weighted Assets"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    "certificate": {
+      "title": "Expert Crypto-Actifs d'Élite",
+      "badgeId": "badge_crypto_expert",
+      "badgeLabel": "💎 Expert Crypto"
+    }
+  },
+  {
+    "id": "finance",
+    "domain": "📈 Finance personnelle & investissement",
+    "title": "Planification Financière, Intérêts Composés & Portefeuilles d'Élite",
+    "description": "Apprenez les règles d'or des plus grands investisseurs, maîtrisez les intérêts composés, et apprenez à gérer votre budget pour maximiser votre capacité d'investissement.",
+    "levels": [
+      {
+        "id": "finance-beginner",
+        "name": "Niveau Débutant",
+        "lessons": [
+          {
+            "id": "finance-b1",
+            "title": "La Règle d'Or du Budget : Le 50 / 30 / 20",
+            "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "duration": 5,
+            "text": "La première étape pour accumuler du patrimoine est de contrôler ses flux financiers. La méthode du 50/30/20 est un modèle simple et extrêmement efficace : 50% de vos revenus nets vont aux besoins indispensables (logement, nourriture, assurances), 30% sont alloués aux désirs personnels (loisirs, restaurants, voyages d'exception), et les 20% restants sont obligatoirement épargnés ou investis. En payant d'abord votre 'futur vous-même' (les 20%), vous installez un mécanisme de croissance inéluctable.",
+            "example": "Si vous gagnez 500 000 F CFA net par mois, vous allouez 250 000 F CFA pour les besoins, 150 000 F CFA pour le plaisir, et vous investissez immédiatement 100 000 F CFA dès la réception du salaire.",
+            "advice": "Automatisez vos investissements mensuels. N'attendez pas la fin du mois pour voir ce qu'il vous reste à épargner ; investissez d'abord.",
+            "quiz": {
+              "question": "Dans la règle 50/30/20, quel pourcentage minimum doit être consacré à l'investissement et à l'épargne ?",
+              "options": [
+                "50% des revenus",
+                "30% des revenus",
+                "20% des revenus",
+                "10% des revenus"
+              ],
+              "answerIndex": 2
+            }
+          },
+          {
+            "id": "finance-b2",
+            "title": "Le Miracle des Intérêts Composés",
+            "videoUrl": "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+            "duration": 5,
+            "text": "Albert Einstein qualifiait les intérêts composés de 'huitième merveille du monde'. Le concept est simple mais contre-intuitif pour l'esprit humain : les gains générés par votre capital initial sont réinvestis pour produire à leur tour de nouveaux gains. Avec le temps, ce processus s'accélère de façon exponentielle. Plus vous commencez tôt, plus l'effet de levier du temps travaille pour vous, même avec de petites sommes.",
+            "example": "Un investissement de 100 000 F CFA à un taux de 12% par an vaut 112 000 F CFA après un an. L'année suivante, les 12% s'appliquent sur 112 000 F CFA (donc +13 440 F CFA de gain), et non plus seulement sur les 100 000 F CFA d'origine.",
+            "advice": "Ne touchez jamais à vos intérêts accumulés lors de vos premières années d'investissement. Laissez-les faire boule de neige.",
+            "quiz": {
+              "question": "Quelle est la clé majeure pour faire fructifier l'effet boule de neige des intérêts composés ?",
+              "options": [
+                "Retirer ses gains à la fin de chaque mois",
+                "Laisser ses gains réinvestis sur une longue période",
+                "Changer d'avis et d'investissement chaque semaine",
+                "Emprunter de grosses sommes de crédit conso"
+              ],
+              "answerIndex": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "finance-intermediate",
+        "name": "Niveau Intermédiaire",
+        "lessons": [
+          {
+            "id": "finance-i1",
+            "title": "Diversification de Portefeuille et Gestion du Risque",
+            "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "duration": 5,
+            "text": "Le seul 'repas gratuit' en finance est la diversification. Elle consiste à répartir son capital sur différentes classes d'actifs (actions, immobilier, métaux précieux, capital-risque, crypto-actifs) et zones géographiques afin de minimiser l'impact d'une mauvaise performance individuelle. Une saine allocation d'actifs est celle qui s'aligne sur votre horizon de placement et votre profil de tolérance aux fluctuations.",
+            "example": "Si un secteur (comme la tech) traverse une crise, vos parts dans des projets immobiliers physiques résilients compensent la baisse de valeur globale de votre patrimoine.",
+            "advice": "Ne mettez jamais tous vos œufs dans le même panier. Même l'actif qui vous semble le plus sûr peut traverser une période de turbulences.",
+            "quiz": {
+              "question": "Quel est le but premier de la diversification de vos investissements ?",
+              "options": [
+                "Augmenter la complexité fiscale de vos comptes",
+                "Éviter de perdre l'intégralité de son capital sur un seul projet",
+                "Gagner le maximum d'argent en un seul jour",
+                "Obtenir les conseils des banquiers les plus chers"
+              ],
+              "answerIndex": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "finance-advanced",
+        "name": "Niveau Avancé",
+        "lessons": [
+          {
+            "id": "finance-a1",
+            "title": "La Règle des 4% et l'Indépendance Financière (Mouvement FIRE)",
+            "videoUrl": "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+            "duration": 5,
+            "text": "Le mouvement FIRE (Financial Independence, Retire Early) promeut l'accumulation rapide de capital pour vivre de ses rentes bien avant l'âge légal de la retraite. Le pilier scientifique de ce mouvement est la 'Règle des 4%' issue de l'étude Trinity. Elle stipule qu'un investisseur disposant d'un portefeuille d'actifs équilibré peut en retirer 4% par an (ajusté de l'inflation) sans jamais épuiser son capital de son vivant. Le montant idéal à accumuler équivaut ainsi à 25 fois vos dépenses annuelles.",
+            "example": "Si vos dépenses de prestige annuelles s'élèvent à 12 000 000 F CFA, vous atteignez l'indépendance financière totale dès lors que votre portefeuille d'actifs s'élève à 300 000 000 F CFA (car 4% de 300M = 12M).",
+            "advice": "Le but de l'indépendance financière n'est pas l'oisiveté, mais la liberté souveraine de choisir ses activités sans contrainte d'argent.",
+            "quiz": {
+              "question": "Selon la règle empirique FIRE, combien de fois vos dépenses annuelles devez-vous accumuler pour être financièrement indépendant ?",
+              "options": [
+                "5 fois vos dépenses",
+                "10 fois vos dépenses",
+                "25 fois vos dépenses",
+                "100 fois vos dépenses"
+              ],
+              "answerIndex": 2
+            }
+          }
+        ]
+      }
+    ],
+    "finalQuiz": {
+      "title": "Grand Quiz de Certification Finance d'Élite",
+      "questions": [
+        {
+          "question": "Qui a qualifié les intérêts composés de 'huitième merveille du monde' ?",
+          "options": [
+            "Warren Buffett",
+            "Albert Einstein",
+            "Satoshi Nakamoto",
+            "John Rockefeller"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "question": "Qu'est-ce que le taux de rendement net réel d'un investissement ?",
+          "options": [
+            "Le taux brut multiplié par dix",
+            "Le rendement brut diminué des frais, des taxes et de l'inflation",
+            "Le montant total que la banque accepte de vous prêter",
+            "Le prix d'une part d'actif de luxe divisé par deux"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "question": "Quelle est l'épargne de précaution minimale conseillée par les experts avant d'investir ?",
+          "options": [
+            "Équivalente à 3 à 6 mois de vos dépenses courantes de subsistance",
+            "Zéro, il faut tout investir dès le premier jour",
+            "L'équivalent d'un an de salaire en billets physiques sous le matelas",
+            "Autant de crédit à la consommation que possible"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    "certificate": {
+      "title": "Maître de la Planification Financière d'Élite",
+      "badgeId": "badge_finance_expert",
+      "badgeLabel": "🏦 Expert Finance"
+    }
+  },
+  {
+    "id": "immobilier",
+    "domain": "🏘️ Investissement immobilier",
+    "title": "Immobilier de Prestige, Effet de Levier & Co-investissement",
+    "description": "Apprenez les leviers de l'investissement immobilier de prestige. Découvrez comment évaluer des biens exclusifs, optimiser votre fiscalité et investir à plusieurs.",
+    "levels": [
+      {
+        "id": "immo-beginner",
+        "name": "Niveau Débutant",
+        "lessons": [
+          {
+            "id": "immo-b1",
+            "title": "L'Emplacement et l'Évaluation du Potentiel Locatif",
+            "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "duration": 5,
+            "text": "En immobilier, les trois critères fondamentaux sont : l'emplacement, l'emplacement, et l'emplacement. Un bien haut de gamme situé dans un secteur d'excellence (comme la Côte d'Azur, les quartiers d'affaires de Dakar, ou le centre historique de Genève) préserve sa valeur à long terme face à toutes les crises. Évaluer le potentiel d'un bien requiert d'étudier le prix au mètre carré, la tension locative de la zone, et la qualité architecturale intrinseque du bâtiment.",
+            "example": "Une villa sur la presqu'île de Saint-Tropez offre une rentabilité brute modérée mais enregistre une plus-value historique de 8% par an en moyenne grâce à sa rareté foncière absolue.",
+            "advice": "Ne laissez pas vos émotions guider un achat d'investissement. L'immobilier d'investissement est un jeu de chiffres purs : rentabilité, flux de trésorerie, et pérennité.",
+            "quiz": {
+              "question": "Quel est le facteur numéro un de la valorisation à long terme d'un actif immobilier ?",
+              "options": [
+                "La couleur des peintures intérieures",
+                "L'emplacement géographique du bien",
+                "Le nom de l'agence immobilière",
+                "La vitesse de connexion internet de la ville"
+              ],
+              "answerIndex": 1
+            }
+          },
+          {
+            "id": "immo-b2",
+            "title": "Le Levier du Co-investissement Fractionné",
+            "videoUrl": "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+            "duration": 5,
+            "text": "L'immobilier de prestige a longtemps été un club ultra-fermé nécessitant des apports de capitaux de centaines de millions de F CFA. Le co-investissement fractionné (propulsé par WealthCraft) brise ce plafond. En réunissant un consortium d'investisseurs certifiés au sein d'une société civile immobilière (ou d'une structure ad-hoc équivalente), le bien est découpé en milliers de parts d'égal intérêt. Chaque co-investisseur acquiert ainsi la liberté de diversifier son capital sur plusieurs adresses de prestige.",
+            "example": "Au lieu de dépenser 300 000 000 F CFA pour acheter un seul appartement à Abidjan, vous investissez 2 000 000 F CFA dans 15 appartements prestigieux différents répartis dans le monde entier, éliminant le risque de vacances locatives.",
+            "advice": "Le co-investissement fractionné requiert des gestionnaires chevronnés pour administrer la maintenance des biens, la collecte des loyers et la comptabilité.",
+            "quiz": {
+              "question": "Quel est le principal avantage du co-investissement fractionné ?",
+              "options": [
+                "Devenir l'unique gardien d'un château fort médiéval",
+                "Diviser son capital sur plusieurs adresses de prestige à moindres coûts",
+                "Ne plus payer aucun impôt de sa vie de façon magique",
+                "Pouvoir repeindre la cuisine de la villa sans l'accord des autres"
+              ],
+              "answerIndex": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "immo-intermediate",
+        "name": "Niveau Intermédiaire",
+        "lessons": [
+          {
+            "id": "immo-i1",
+            "title": "Le Taux de Rendement Interne (TRI) et Cash-Flow",
+            "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "duration": 5,
+            "text": "Le Taux de Rendement Interne (TRI) est la mesure financière la plus complète pour évaluer un placement immobilier. Contrairement au rendement locatif brut simple, le TRI prend en compte le prix d'achat, les frais d'acquisition, les coûts de rénovation récurrents, l'effet de levier du crédit éventuel, l'imposition, ainsi que le prix de revente estimé à la fin de la période de détention. Le cash-flow (flux de trésorerie net) représente quant à lui l'argent réel qui reste dans votre portefeuille chaque mois après paiement de toutes les charges et mensualités de crédit.",
+            "example": "Un appartement haut de gamme génère 1 500 000 F CFA de loyer mensuel. Après versement de 1 000 000 F CFA d'échéances bancaires et 300 000 F CFA de charges et taxes, il génère un cash-flow positif net de +200 000 F CFA.",
+            "advice": "Cherchez toujours des projets offrant des cash-flows positifs ou neutres pour éviter de devoir injecter de l'argent de votre poche pour combler les charges.",
+            "quiz": {
+              "question": "Qu'est-ce que le cash-flow positif dans un investissement immobilier ?",
+              "options": [
+                "L'argent restant chaque mois après déduction de TOUTES les charges et crédits",
+                "Le montant total qu'il a fallu emprunter à la banque pour acheter",
+                "La somme théorique de la valeur du mobilier intérieur",
+                "Le prix de vente espéré dans vingt ans"
+              ],
+              "answerIndex": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "immo-advanced",
+        "name": "Niveau Avancé",
+        "lessons": [
+          {
+            "id": "immo-a1",
+            "title": "L'Optimisation Fiscale et la Double Imposition Internationale",
+            "videoUrl": "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+            "duration": 5,
+            "text": "Dans l'immobilier d'élite transfrontalier, la fiscalité est un facteur déterminant de la performance finale. Les investisseurs avertis utilisent des conventions fiscales bilatérales pour éviter la double imposition internationale de leurs revenus locatifs. Des structures de détention adaptées (comme les SCI à l'impôt sur les sociétés en France ou les trusts fiduciaires en Suisse) permettent d'amortir comptablement les biens physiques, réduisant ainsi légalement l'assiette imposable à zéro durant de nombreuses années.",
+            "example": "Grâce au régime de l'amortissement réputé, l'usure comptable des murs de votre appartement de prestige à Paris annule l'impôt sur les loyers perçus en Afrique de l'Ouest.",
+            "advice": "Entourez-vous toujours d'un conseiller fiscal agréé. La conformité absolue est l'unique garantie d'un patrimoine serein.",
+            "quiz": {
+              "question": "Comment l'amortissement comptable aide-t-il l'investisseur immobilier d'élite ?",
+              "options": [
+                "En faisant s'effondrer physiquement les murs de l'appartement",
+                "En réduisant légalement l'assiette imposable des revenus locatifs",
+                "En forçant la banque à effacer la dette immobilière",
+                "En augmentant le montant des charges de copropriété"
+              ],
+              "answerIndex": 1
+            }
+          }
+        ]
+      }
+    ],
+    "finalQuiz": {
+      "title": "Grand Quiz de Certification Immobilier d'Élite",
+      "questions": [
+        {
+          "question": "Quelle métrique financière intègre la plus-value de revente finale pour juger de la performance globale ?",
+          "options": [
+            "Le rendement brut simple",
+            "Le Taux de Rendement Interne (TRI)",
+            "Le montant de la taxe foncière",
+            "La commission d'intermédiation"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "question": "Qu'est-ce que la tension locative d'un marché ?",
+          "options": [
+            "L'électricité statique mesurée dans les prises de courant",
+            "Le déséquilibre entre une forte demande de locataires et une offre de logements insuffisante",
+            "La dispute récurrente entre les copropriétaires d'un immeuble",
+            "L'augmentation des taux d'intérêts directeurs"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "question": "Que permet le co-investissement fractionné de WealthCraft ?",
+          "options": [
+            "Devenir le seul propriétaire d'une forêt domaniale",
+            "Devenir propriétaire de fractions de résidences de luxe partout dans le monde",
+            "Éliminer légalement toute obligation de rembourser ses dettes personnelles",
+            "Louer gratuitement n'importe quel hôtel de la terre"
+          ],
+          "answerIndex": 1
+        }
+      ]
+    },
+    "certificate": {
+      "title": "Grand Maître du Patrimoine Immobilier d'Élite",
+      "badgeId": "badge_immo_expert",
+      "badgeLabel": "🏠 Expert Immobilier"
+    }
+  }
+]
