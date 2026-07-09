@@ -49,6 +49,7 @@ import WithdrawTab from './components/WithdrawTab';
 import TopTab from './components/TopTab';
 import EntrepriseTab from './components/EntrepriseTab';
 import AuthScreen from './components/AuthScreen';
+import { handleApiResponse } from './utils/api';
 
 export default function App() {
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('wealthcraft_token'));
@@ -94,22 +95,19 @@ export default function App() {
             'Authorization': `Bearer ${token}`
           }
         });
-        if (response.ok) {
-          const data = await response.json();
-          setProfile(data.profile);
-          setTransactions(data.profile.transactions || []);
-          setReferrals(data.profile.referrals || []);
-          setTasks(data.profile.tasks || []);
-          setUsedPromoCodes(data.profile.usedPromoCodes || []);
-          setSpinsLeft(data.profile.spinsLeft ?? 5);
-        } else {
-          // Token is expired or invalid
-          localStorage.removeItem('wealthcraft_token');
-          setToken(null);
-          setProfile(null);
-        }
+        const data = await handleApiResponse(response);
+        setProfile(data.profile);
+        setTransactions(data.profile.transactions || []);
+        setReferrals(data.profile.referrals || []);
+        setTasks(data.profile.tasks || []);
+        setUsedPromoCodes(data.profile.usedPromoCodes || []);
+        setSpinsLeft(data.profile.spinsLeft ?? 5);
       } catch (err) {
         console.error("Error fetching profile:", err);
+        // Token is expired, invalid, or server offline
+        localStorage.removeItem('wealthcraft_token');
+        setToken(null);
+        setProfile(null);
       } finally {
         setLoading(false);
       }
@@ -159,10 +157,7 @@ export default function App() {
         body: JSON.stringify({ assetId, amount })
       });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || "Une erreur s'est produite lors de l'investissement.");
-      }
+      const data = await handleApiResponse(response);
 
       setProfile(data.profile);
       setTransactions(data.profile.transactions || []);
@@ -191,10 +186,7 @@ export default function App() {
         body: JSON.stringify({ taskId })
       });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || "Une erreur s'est produite.");
-      }
+      const data = await handleApiResponse(response);
 
       setProfile(data.profile);
       setTransactions(data.profile.transactions || []);
@@ -222,10 +214,7 @@ export default function App() {
         body: JSON.stringify({ code })
       });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || "Code promo invalide.");
-      }
+      const data = await handleApiResponse(response);
 
       setProfile(data.profile);
       setTransactions(data.profile.transactions || []);
@@ -257,10 +246,7 @@ export default function App() {
         body: JSON.stringify({ refId })
       });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error);
-      }
+      const data = await handleApiResponse(response);
 
       setProfile(data.profile);
       setTransactions(data.profile.transactions || []);
@@ -289,10 +275,7 @@ export default function App() {
         body: JSON.stringify({ amount, method, accountNumber: details })
       });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error);
-      }
+      const data = await handleApiResponse(response);
 
       setProfile(data.profile);
       setTransactions(data.profile.transactions || []);
@@ -324,10 +307,7 @@ export default function App() {
         body: JSON.stringify({ amount, method: depositMethod })
       });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error);
-      }
+      const data = await handleApiResponse(response);
 
       setProfile(data.profile);
       setTransactions(data.profile.transactions || []);
@@ -336,13 +316,14 @@ export default function App() {
       
       // Complete KYC automatically on first deposit as convenience
       try {
-        await fetch('/api/profile/verify-kyc', {
+        const kycResponse = await fetch('/api/profile/verify-kyc', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           }
         });
+        await handleApiResponse(kycResponse);
       } catch (e) {
         // Silent catch for secondary trigger
       }
@@ -368,10 +349,7 @@ export default function App() {
         body: JSON.stringify({ amount, label })
       });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error);
-      }
+      const data = await handleApiResponse(response);
 
       setProfile(data.profile);
       setTransactions(data.profile.transactions || []);
@@ -398,7 +376,7 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#1A1917] flex flex-col justify-center items-center font-sans">
+      <div className="min-h-screen bg-[#2E220C] flex flex-col justify-center items-center font-sans">
         <div className="animate-spin w-10 h-10 border-4 border-[#E2C27A] border-t-transparent rounded-full mb-4"></div>
         <p className="text-xs font-bold text-[#F5F3EE] uppercase tracking-wider">Connexion d'élite en cours...</p>
       </div>
@@ -410,9 +388,9 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1A1917] text-[#F5F3EE] flex flex-col font-sans selection:bg-[#E2C27A] selection:text-white">
+    <div className="min-h-screen bg-[#2E220C] text-[#F5F3EE] flex flex-col font-sans selection:bg-[#E2C27A] selection:text-white">
       {/* --- Premium Header / Navigation Bar --- */}
-      <header className="sticky top-0 z-40 bg-[#242321]/80 backdrop-blur-md border-b border-[#E2C27A]/10 shadow-sm">
+      <header className="sticky top-0 z-40 bg-[#3D2E14]/80 backdrop-blur-md border-b border-[#E2C27A]/10 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Elegant Minimalist Logo */}
@@ -427,10 +405,10 @@ export default function App() {
                 referrerPolicy="no-referrer"
               />
               <div>
-                <span className="font-extrabold text-lg tracking-tight font-manrope block text-[#F5F3EE]">
+                <span className="font-bold text-lg tracking-tight font-georgia block text-[#F5F3EE]">
                   Wealth<span className="text-[#E2C27A]">Craft</span>
                 </span>
-                <span className="text-[9px] text-[#B8B2A8] tracking-widest font-bold uppercase block -mt-1">
+                <span className="text-[9px] text-[#B8B2A8] tracking-widest font-bold uppercase block -mt-1 font-georgia">
                   Premium Wealth
                 </span>
               </div>
@@ -440,7 +418,7 @@ export default function App() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="flex items-center gap-2 px-4 py-2.5 bg-[#242321] border-2 border-[#E2C27A]/20 hover:border-[#E2C27A]/50 text-[#F5F3EE] rounded-xl text-xs font-extrabold transition-all cursor-pointer shadow-sm active:scale-95"
+                className="flex items-center gap-2 px-4 py-2.5 bg-[#3D2E14] border-2 border-[#E2C27A]/20 hover:border-[#E2C27A]/50 text-[#F5F3EE] rounded-xl text-xs font-extrabold transition-all cursor-pointer shadow-sm active:scale-95"
               >
                 {isMobileMenuOpen ? <X className="w-4.5 h-4.5 text-[#E2C27A]" /> : <Menu className="w-4.5 h-4.5 text-[#E2C27A]" />}
                 <span>Onglets</span>
@@ -450,7 +428,7 @@ export default function App() {
             {/* Right Header Controls (Balances & Profile) */}
             <div className="flex items-center gap-3">
               {/* Account Quick Cash Display */}
-              <div className="hidden sm:flex bg-[#242321] border border-[#E2C27A]/20 px-4 py-2 rounded-2xl items-center gap-2.5">
+              <div className="hidden sm:flex bg-[#3D2E14] border border-[#E2C27A]/20 px-4 py-2 rounded-2xl items-center gap-2.5">
                 <Wallet className="w-4.5 h-4.5 text-[#E2C27A]" />
                 <div className="text-left">
                   <p className="text-[9px] uppercase tracking-wider text-[#B8B2A8] font-semibold">Disponible</p>
@@ -475,7 +453,7 @@ export default function App() {
               </button>
 
               {/* Profile Badge */}
-              <div className="hidden sm:flex items-center gap-2 bg-[#1A1917] text-white py-1.5 pl-3 pr-2 rounded-2xl border border-white/10">
+              <div className="hidden sm:flex items-center gap-2 bg-[#2E220C] text-white py-1.5 pl-3 pr-2 rounded-2xl border border-white/10">
                 <span className="text-xs font-bold">{(profile.fullName || profile.name || 'Premium').split(' ')[0]}</span>
                 <span className="bg-[#E2C27A] text-[#F5F3EE] text-[9px] font-black px-1.5 py-0.5 rounded-lg uppercase">
                   {profile.tier}
@@ -494,7 +472,7 @@ export default function App() {
 
         {/* Universal Navigation Dropdown (opens with the 3 bars) */}
         {isMobileMenuOpen && (
-          <div className="border-t border-[#E2C27A]/10 bg-[#242321] shadow-2xl animate-slide-down relative z-50">
+          <div className="border-t border-[#E2C27A]/10 bg-[#3D2E14] shadow-2xl animate-slide-down relative z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
               <div className="flex items-center justify-between mb-5 border-b border-[#E2C27A]/10 pb-3">
                 <div>
@@ -618,10 +596,10 @@ export default function App() {
             />
 
             {/* Complete audit ledger of transactions at the bottom of Withdrawal section */}
-            <div className="glass-card p-6 md:p-8 rounded-[24px] space-y-6 border border-[#E2C27A]/10 bg-[#242321]">
+            <div className="glass-card p-6 md:p-8 rounded-[24px] space-y-6 border border-[#E2C27A]/10 bg-[#3D2E14]">
               <div className="flex justify-between items-center border-b border-[#E2C27A]/10 pb-4">
                 <div>
-                  <h2 className="text-base font-bold text-[#F5F3EE] font-manrope">Grand Livre des Transactions</h2>
+                  <h2 className="text-base font-bold text-[#F5F3EE] font-georgia">Grand Livre des Transactions</h2>
                   <p className="text-[10px] text-[#B8B2A8] mt-1">L'ensemble de vos flux financiers audités et horodatés.</p>
                 </div>
                 <span className="text-[9px] uppercase font-bold text-[#E2C27A] bg-[#E2C27A]/10 px-3 py-1 rounded-full border border-[#E2C27A]/20">
@@ -648,7 +626,7 @@ export default function App() {
                       {transactions.map((tx) => {
                         const isPositive = tx.type === 'deposit' || tx.type === 'reward' || tx.type === 'referral';
                         return (
-                          <tr key={tx.id} className="text-xs hover:bg-[#1A1917]/50 transition-all">
+                          <tr key={tx.id} className="text-xs hover:bg-[#2E220C]/50 transition-all">
                             <td className="py-3 px-2 font-mono font-bold text-[#B8B2A8]">{tx.id}</td>
                             <td className="py-3 px-2">
                               <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider ${
@@ -682,16 +660,16 @@ export default function App() {
       </main>
 
       {/* --- Elegant Trust Badges & Disclaimers Footer --- */}
-      <footer className="bg-[#242321] border-t border-[#E2C27A]/10 py-10">
+      <footer className="bg-[#3D2E14] border-t border-[#E2C27A]/10 py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-[#E2C27A]/10">
             {/* Column 1: Short summary */}
             <div className="space-y-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#1A1917] flex items-center justify-center border border-[#E2C27A]/30">
-                  <span className="font-black text-[#C8A25D] text-xs font-manrope">W</span>
+                <div className="w-8 h-8 rounded-lg bg-[#2E220C] flex items-center justify-center border border-[#E2C27A]/30">
+                  <span className="font-bold text-[#C8A25D] text-xs font-georgia">W</span>
                 </div>
-                <span className="font-extrabold text-sm tracking-tight font-manrope">
+                <span className="font-bold text-sm tracking-tight font-georgia">
                   Wealth<span className="text-[#E2C27A]">Craft</span>
                 </span>
               </div>
@@ -730,13 +708,13 @@ export default function App() {
       {/* --- Deposit Simulator Dialog/Modal (Revolut-styled) --- */}
       {isDepositModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-[#242321] max-w-md w-full rounded-[28px] border border-[#E2C27A]/30 p-6 shadow-2xl relative overflow-hidden animate-scale-up">
+          <div className="bg-[#3D2E14] max-w-md w-full rounded-[28px] border border-[#E2C27A]/30 p-6 shadow-2xl relative overflow-hidden animate-scale-up">
             <div className="absolute right-0 top-0 w-24 h-24 bg-[#E2C27A]/5 rounded-full blur-xl"></div>
             
             <div className="flex justify-between items-center border-b border-[#E2C27A]/10 pb-3 mb-5">
               <div className="flex items-center gap-2">
                 <PiggyBank className="w-5 h-5 text-[#E2C27A]" />
-                <h3 className="font-extrabold text-base text-[#F5F3EE] font-manrope">Approvisionner mon compte</h3>
+                <h3 className="font-bold text-base text-[#F5F3EE] font-georgia">Approvisionner mon compte</h3>
               </div>
               <button 
                 onClick={() => { setIsDepositModalOpen(false); setDepositStatus(null); }}
@@ -757,7 +735,7 @@ export default function App() {
                 <select
                   value={depositMethod}
                   onChange={(e) => setDepositMethod(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-white text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A] cursor-pointer"
+                  className="w-full px-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A] cursor-pointer"
                 >
                   <option value="Carte Bancaire Premium">Carte de Débit/Crédit Premium (Instant)</option>
                   <option value="Virement Bancaire SEPA">Virement Bancaire SEPA (Fonds simulés instantanément)</option>
@@ -778,7 +756,7 @@ export default function App() {
                     placeholder="Saisissez un montant (Ex: 5000)"
                     min="100"
                     max="10000000"
-                    className="w-full pl-8 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-white text-xs font-bold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                    className="w-full pl-8 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-bold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                     required
                   />
                 </div>
@@ -815,7 +793,7 @@ export default function App() {
 
       {/* --- Slide-in Toast Notifications --- */}
       {toast && (
-        <div className="fixed bottom-6 right-6 z-50 max-w-sm w-full bg-[#242321] border-l-4 border-l-[#E2C27A] rounded-xl shadow-2xl p-4 border border-[#E2C27A]/20 flex items-start gap-3 animate-slide-left">
+        <div className="fixed bottom-6 right-6 z-50 max-w-sm w-full bg-[#3D2E14] border-l-4 border-l-[#E2C27A] rounded-xl shadow-2xl p-4 border border-[#E2C27A]/20 flex items-start gap-3 animate-slide-left">
           <div className="p-1.5 bg-[#E2C27A]/10 text-[#E2C27A] rounded-lg">
             {toast.type === 'success' ? (
               <CheckCircle2 className="w-5 h-5 text-[#19B37A]" />

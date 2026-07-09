@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Shield, Mail, Lock, User, UserPlus, LogIn, CheckCircle2, AlertCircle } from "lucide-react";
+import { handleApiResponse } from "../utils/api";
 
 interface AuthScreenProps {
   onAuthSuccess: (token: string, profile: any, refNotification?: string) => void;
@@ -92,11 +93,7 @@ export default function AuthScreen({ onAuthSuccess }: AuthScreenProps) {
         body: JSON.stringify(body)
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Une erreur est survenue lors de l'authentification.");
-      }
+      const data = await handleApiResponse(response);
 
       // Successful Auth
       onAuthSuccess(data.token, data.profile, data.refNotification);
@@ -108,9 +105,9 @@ export default function AuthScreen({ onAuthSuccess }: AuthScreenProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#1A1917] flex flex-col justify-center items-center px-4 py-12 selection:bg-[#E2C27A] selection:text-white">
+    <div className="min-h-screen bg-[#2E220C] flex flex-col justify-center items-center px-4 py-12 selection:bg-[#E2C27A] selection:text-white">
       {/* Premium Elegant Card Container */}
-      <div className="max-w-md w-full bg-[#242321] rounded-[32px] border border-[#E2C27A]/20 shadow-2xl p-8 md:p-10 relative overflow-hidden animate-scale-up">
+      <div className="max-w-md w-full bg-[#3D2E14] rounded-[32px] border border-[#E2C27A]/20 shadow-2xl p-8 md:p-10 relative overflow-hidden animate-scale-up">
         <div className="absolute right-0 top-0 w-32 h-32 bg-[#E2C27A]/5 rounded-full blur-2xl"></div>
         
         {/* Brand Header */}
@@ -124,10 +121,10 @@ export default function AuthScreen({ onAuthSuccess }: AuthScreenProps) {
             />
           </div>
           <div>
-            <h1 className="font-black text-2xl tracking-tight font-manrope text-[#F5F3EE]">
+            <h1 className="font-bold text-2xl tracking-tight font-georgia text-[#F5F3EE]">
               Wealth<span className="text-[#E2C27A]">Craft</span>
             </h1>
-            <p className="text-[10px] text-[#B8B2A8] tracking-widest font-bold uppercase -mt-0.5">
+            <p className="text-[10px] text-[#B8B2A8] tracking-widest font-bold uppercase -mt-0.5 font-georgia">
               Cercle d'Investissement d'Élite
             </p>
           </div>
@@ -163,7 +160,7 @@ export default function AuthScreen({ onAuthSuccess }: AuthScreenProps) {
                   placeholder="Ex: Jean Dupont"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#242321] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                   required={!isLogin}
                 />
               </div>
@@ -180,7 +177,7 @@ export default function AuthScreen({ onAuthSuccess }: AuthScreenProps) {
                 placeholder="Ex: jean.dupont@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#242321] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                 required
               />
             </div>
@@ -201,7 +198,7 @@ export default function AuthScreen({ onAuthSuccess }: AuthScreenProps) {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#242321] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                 required
               />
             </div>
@@ -218,7 +215,7 @@ export default function AuthScreen({ onAuthSuccess }: AuthScreenProps) {
                   placeholder="••••••••"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#242321] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                   required={!isLogin}
                 />
               </div>
@@ -243,7 +240,7 @@ export default function AuthScreen({ onAuthSuccess }: AuthScreenProps) {
                   placeholder="Saisissez un code (Ex: XFVEP8)"
                   value={referralCode}
                   onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#242321] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                 />
               </div>
             </div>

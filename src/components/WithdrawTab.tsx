@@ -147,8 +147,8 @@ export default function WithdrawTab({ profile, transactions, onWithdraw }: Withd
               onClick={() => { setSelectedMethod('bank'); setErrorStatus(null); setTransactionReceipt(null); }}
               className={`p-4 rounded-[20px] border flex flex-col items-center text-center gap-2 transition-all cursor-pointer ${
                 selectedMethod === 'bank'
-                  ? 'bg-[#1A1917] text-white border-[#F5F3EE] shadow-sm'
-                  : 'bg-[#242321] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/40'
+                  ? 'bg-[#2E220C] text-white border-[#F5F3EE] shadow-sm'
+                  : 'bg-[#3D2E14] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/40'
               }`}
             >
               <CreditCard className="w-5 h-5 text-[#E2C27A]" />
@@ -159,8 +159,8 @@ export default function WithdrawTab({ profile, transactions, onWithdraw }: Withd
               onClick={() => { setSelectedMethod('paypal'); setErrorStatus(null); setTransactionReceipt(null); }}
               className={`p-4 rounded-[20px] border flex flex-col items-center text-center gap-2 transition-all cursor-pointer ${
                 selectedMethod === 'paypal'
-                  ? 'bg-[#1A1917] text-white border-[#F5F3EE] shadow-sm'
-                  : 'bg-[#242321] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/40'
+                  ? 'bg-[#2E220C] text-white border-[#F5F3EE] shadow-sm'
+                  : 'bg-[#3D2E14] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/40'
               }`}
             >
               <Wallet className="w-5 h-5 text-[#E2C27A]" />
@@ -171,8 +171,8 @@ export default function WithdrawTab({ profile, transactions, onWithdraw }: Withd
               onClick={() => { setSelectedMethod('crypto'); setErrorStatus(null); setTransactionReceipt(null); }}
               className={`p-4 rounded-[20px] border flex flex-col items-center text-center gap-2 transition-all cursor-pointer ${
                 selectedMethod === 'crypto'
-                  ? 'bg-[#1A1917] text-white border-[#F5F3EE] shadow-sm'
-                  : 'bg-[#242321] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/40'
+                  ? 'bg-[#2E220C] text-white border-[#F5F3EE] shadow-sm'
+                  : 'bg-[#3D2E14] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/40'
               }`}
             >
               <Coins className="w-5 h-5 text-[#E2C27A]" />
@@ -183,8 +183,8 @@ export default function WithdrawTab({ profile, transactions, onWithdraw }: Withd
               onClick={() => { setSelectedMethod('mobile'); setErrorStatus(null); setTransactionReceipt(null); }}
               className={`p-4 rounded-[20px] border flex flex-col items-center text-center gap-2 transition-all cursor-pointer ${
                 selectedMethod === 'mobile'
-                  ? 'bg-[#1A1917] text-white border-[#F5F3EE] shadow-sm'
-                  : 'bg-[#242321] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/40'
+                  ? 'bg-[#2E220C] text-white border-[#F5F3EE] shadow-sm'
+                  : 'bg-[#3D2E14] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/40'
               }`}
             >
               <Smartphone className="w-5 h-5 text-[#E2C27A]" />
@@ -243,7 +243,7 @@ export default function WithdrawTab({ profile, transactions, onWithdraw }: Withd
                 <div className="flex justify-center gap-3">
                   <button 
                     onClick={() => setTransactionReceipt(null)}
-                    className="bg-[#E2C27A] text-[#1A1917] hover:bg-[#C8A25D] text-xs font-bold px-5 py-3 rounded-xl transition-colors cursor-pointer"
+                    className="bg-[#E2C27A] text-[#2E220C] hover:bg-[#C8A25D] text-xs font-bold px-5 py-3 rounded-xl transition-colors cursor-pointer"
                   >
                     Faire un autre retrait
                   </button>
@@ -254,7 +254,7 @@ export default function WithdrawTab({ profile, transactions, onWithdraw }: Withd
               <form onSubmit={handleWithdrawSubmit} className="space-y-6">
                 
                 {/* Global cash indicators */}
-                <div className="p-4 rounded-xl bg-[#242321] border border-[#E2C27A]/15 flex items-center justify-between text-xs">
+                <div className="p-4 rounded-xl bg-[#2E220C] border border-[#E2C27A]/15 flex items-center justify-between text-xs">
                   <div>
                     <p className="text-[#B8B2A8]">Votre Solde Disponible Actuel :</p>
                     <p className="text-xl font-extrabold text-[#F5F3EE] font-manrope mt-1">
@@ -430,7 +430,7 @@ export default function WithdrawTab({ profile, transactions, onWithdraw }: Withd
               <p>
                 WealthCraft utilise des contrats d'intermédiation financière hautement surveillés et des protocoles de chiffrement <strong className="text-[#F5F3EE]">AES-256</strong> conformes aux régulations de l'ACPR et de la Banque de France.
               </p>
-              <div className="p-3 bg-[#242321] rounded-xl border border-[#E2C27A]/15 text-[11px] space-y-2">
+              <div className="p-3 bg-[#2E220C] rounded-xl border border-[#E2C27A]/15 text-[11px] space-y-2">
                 <div className="flex items-center gap-2 text-[#E2C27A] font-bold">
                   <Info className="w-4 h-4" /> Temps moyen constaté
                 </div>
@@ -453,7 +453,7 @@ export default function WithdrawTab({ profile, transactions, onWithdraw }: Withd
             ) : (
               <div className="space-y-3">
                 {transactions.filter(t => t.type === 'withdrawal').slice(0, 4).map((tx) => (
-                  <div key={tx.id} className="flex justify-between items-center p-2.5 rounded-xl bg-[#242321] border border-[#E2C27A]/5">
+                  <div key={tx.id} className="flex justify-between items-center p-2.5 rounded-xl bg-[#2E220C] border border-[#E2C27A]/5">
                     <div className="flex items-center gap-2">
                       <div className="p-1.5 bg-amber-50 text-amber-600 rounded-lg">
                         <ArrowUpRight className="w-3.5 h-3.5" />

@@ -148,7 +148,7 @@ export default function EntrepriseTab() {
       </div>
 
       {/* Timeline: Our Story */}
-      <div className="glass-card p-6 md:p-8 rounded-[24px] border border-[#E2C27A]/15 bg-[#242321] relative">
+      <div className="glass-card p-6 md:p-8 rounded-[24px] border border-[#E2C27A]/15 bg-[#3D2E14] relative">
         <div className="flex items-center gap-3 border-b border-[#E2C27A]/10 pb-4 mb-8">
           <div className="p-2 bg-[#E2C27A]/10 rounded-xl">
             <History className="w-5 h-5 text-[#E2C27A]" />
@@ -164,7 +164,7 @@ export default function EntrepriseTab() {
           
           {/* Year 2026 */}
           <div className="relative">
-            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#E2C27A] text-[#1A1917] text-[10px] font-black border-4 border-[#242321]">
+            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#E2C27A] text-[#2E220C] border-4 border-[#3D2E14]">
               <Sparkles className="w-2.5 h-2.5" />
             </span>
             <div className="space-y-1">
@@ -178,7 +178,7 @@ export default function EntrepriseTab() {
 
           {/* Year 2024 */}
           <div className="relative">
-            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#C8A25D] text-[#1A1917] text-[10px] font-black border-4 border-[#242321]">
+            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#C8A25D] text-[#2E220C] border-4 border-[#3D2E14]">
               ✓
             </span>
             <div className="space-y-1">
@@ -192,7 +192,7 @@ export default function EntrepriseTab() {
 
           {/* Year 2023 */}
           <div className="relative">
-            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#C8A25D] text-[#1A1917] text-[10px] font-black border-4 border-[#242321]">
+            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#C8A25D] text-[#2E220C] border-4 border-[#3D2E14]">
               ✓
             </span>
             <div className="space-y-1">
@@ -206,7 +206,7 @@ export default function EntrepriseTab() {
 
           {/* Year 2022 */}
           <div className="relative">
-            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#C8A25D] text-[#1A1917] text-[10px] font-black border-4 border-[#242321]">
+            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#C8A25D] text-[#2E220C] border-4 border-[#3D2E14]">
               ✓
             </span>
             <div className="space-y-1">
@@ -220,7 +220,7 @@ export default function EntrepriseTab() {
 
           {/* Year 2021 */}
           <div className="relative">
-            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#C8A25D] text-[#1A1917] text-[10px] font-black border-4 border-[#242321]">
+            <span className="absolute -left-[31px] md:-left-[47px] top-0.5 flex items-center justify-center w-6 h-6 rounded-full bg-[#C8A25D] text-[#2E220C] border-4 border-[#3D2E14]">
               ✓
             </span>
             <div className="space-y-1">

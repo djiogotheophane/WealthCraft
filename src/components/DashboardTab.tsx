@@ -106,10 +106,10 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
               <Award className="w-3.5 h-3.5" />
               Statut Elite • Membre {profile.tier}
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#242321] font-manrope">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#242321] font-georgia">
               Bonjour, {profile.name}
             </h2>
-            <p className="text-[#B8B2A8] text-sm mt-1 text-gray-300">
+            <p className="text-[#B8B2A8] text-sm mt-1 text-gray-300 font-georgia font-bold italic">
               Votre patrimoine se valorise au rythme de vos ambitions.
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
             </button>
             <button 
               onClick={() => onNavigate('gagner')}
-              className="bg-[#242321]/10 text-white hover:bg-[#242321]/20 font-medium text-sm px-5 py-3 rounded-xl border border-white/10 transition-all cursor-pointer"
+              className="bg-[#3D2E14]/30 text-white hover:bg-[#3D2E14]/50 font-medium text-sm px-5 py-3 rounded-xl border border-white/10 transition-all cursor-pointer"
             >
               Investir
             </button>
@@ -201,11 +201,11 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
 
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center space-y-6 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#E2C27A] bg-[#E2C27A]/10 px-3 py-1 rounded-full border border-[#E2C27A]/20 mb-3 animate-pulse">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E2C27A] bg-[#E2C27A]/10 px-3 py-1 rounded-full border border-[#E2C27A]/20 mb-3 animate-pulse font-georgia">
               <Sparkles className="w-3.5 h-3.5" />
               Lancement Exclusif WealthCraft
             </div>
-            <h3 className="text-2xl font-black text-[#F5F3EE] font-manrope tracking-tight">Roue de la Fortune d'Élite</h3>
+            <h3 className="text-2xl font-bold text-[#F5F3EE] font-georgia tracking-tight">Roue de la Fortune d'Élite</h3>
             <p className="text-xs text-[#B8B2A8] mt-1 max-w-md mx-auto">
               Tentez votre chance sur notre roue premium pour remporter des primes exceptionnelles ajoutées directement à votre capital d'investissement.
             </p>
@@ -214,7 +214,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
           {/* Interactive Wheel Graphic Container */}
           <div className="relative w-[320px] h-[320px] flex items-center justify-center select-none my-4">
             {/* Outer Glowing Golden Rim with decorative dots */}
-            <div className="absolute inset-0 rounded-full border-4 border-[#E2C27A] shadow-xl bg-gradient-to-b from-[#242321] to-[#F3EDE0] flex items-center justify-center">
+            <div className="absolute inset-0 rounded-full border-4 border-[#E2C27A] shadow-xl bg-gradient-to-b from-[#3D2E14] to-[#2E220C] flex items-center justify-center">
               <div className="absolute inset-2 rounded-full border border-[#E2C27A]/40"></div>
               
               {/* Outer rim decorative marker dots */}
@@ -311,7 +311,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
             </div>
 
             {/* Inner Golden Center Hub */}
-            <div className="absolute z-20 w-11 h-11 rounded-full bg-[#1A1917] border-2 border-[#E2C27A] flex items-center justify-center shadow-lg pointer-events-none">
+            <div className="absolute z-20 w-11 h-11 rounded-full bg-[#2E220C] border-2 border-[#E2C27A] flex items-center justify-center shadow-lg pointer-events-none">
               <span className="text-[10px] font-black text-[#C8A25D] tracking-wider font-manrope">WC</span>
               <div className="absolute inset-0 rounded-full border border-white/10 animate-ping opacity-25"></div>
             </div>
@@ -341,7 +341,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
 
             {/* Dynamic Spin Result Notice */}
             {spinResult && (
-              <div className="p-4 rounded-xl border border-[#E2C27A]/20 animate-fade-in bg-[#242321]">
+              <div className="p-4 rounded-xl border border-[#E2C27A]/20 animate-fade-in bg-[#2E220C]">
                 {spinResult.type === 'cash' && (
                   <div className="flex flex-col items-center space-y-1">
                     <Trophy className="w-7 h-7 text-[#E2C27A] animate-bounce" />
@@ -373,7 +373,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
 
             {/* Expiry / Refill Notice */}
             {spinsLeft <= 0 && !isSpinning && (
-              <div className="p-4 rounded-xl border border-[#E2C27A]/25 bg-[#242321] text-[#F5F3EE] text-xs font-bold leading-relaxed text-center space-y-2 animate-fade-in">
+              <div className="p-4 rounded-xl border border-[#E2C27A]/25 bg-[#2E220C] text-[#F5F3EE] text-xs font-bold leading-relaxed text-center space-y-2 animate-fade-in">
                 <div className="flex items-center justify-center gap-1.5 text-[#E2C27A]">
                   <Sparkles className="w-4 h-4 animate-pulse" />
                   <span className="uppercase tracking-wider text-[10px] font-black">Primes Épuisées</span>
@@ -383,7 +383,7 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
                 </p>
                 <button
                   onClick={() => onNavigate('gagner')}
-                  className="mt-1.5 inline-flex items-center gap-1 bg-[#E2C27A] text-[#1A1917] hover:bg-[#C8A25D] hover:text-[#1A1917] text-[10px] font-extrabold uppercase px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+                  className="mt-1.5 inline-flex items-center gap-1 bg-[#E2C27A] text-[#2E220C] hover:bg-[#C8A25D] hover:text-[#2E220C] text-[10px] font-extrabold uppercase px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
                 >
                   Investir maintenant
                 </button>

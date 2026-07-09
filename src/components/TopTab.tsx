@@ -44,7 +44,7 @@ export default function TopTab({ profile }: TopTabProps) {
           <Sparkles className="w-3.5 h-3.5" />
           Club Privé WealthCraft
         </div>
-        <h2 className="text-2xl md:text-3xl font-black text-[#F5F3EE] font-manrope tracking-tight">Le Cercle d'Or</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-[#F5F3EE] font-georgia tracking-tight">Le Cercle d'Or</h2>
         <p className="text-xs text-[#B8B2A8] mt-1 max-w-xl">
           Découvrez les classements des plus grands investisseurs de notre plateforme d'élite et les performances historiques de nos meilleurs actifs de co-investissement.
         </p>
@@ -57,7 +57,7 @@ export default function TopTab({ profile }: TopTabProps) {
             <div className="flex justify-between items-center border-b border-[#E2C27A]/10 pb-4 mb-6">
               <div className="flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-[#E2C27A]" />
-                <h3 className="font-extrabold text-base text-[#F5F3EE] font-manrope">Classement des Investisseurs</h3>
+                <h3 className="font-bold text-base text-[#F5F3EE] font-georgia">Classement des Investisseurs</h3>
               </div>
               <span className="text-[10px] uppercase font-bold text-gray-500">Mis à jour en temps réel</span>
             </div>
@@ -67,7 +67,7 @@ export default function TopTab({ profile }: TopTabProps) {
               {LEADERBOARD_MEMBERS.map((member) => (
                 <div 
                   key={member.rank}
-                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 rounded-2xl bg-[#242321] border border-[#E2C27A]/10 hover:border-[#E2C27A]/30 transition-all gap-3"
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 rounded-2xl bg-[#2E220C] border border-[#E2C27A]/10 hover:border-[#E2C27A]/30 transition-all gap-3"
                 >
                   <div className="flex items-center gap-4">
                     {/* Rank Badge */}
@@ -81,8 +81,8 @@ export default function TopTab({ profile }: TopTabProps) {
 
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-extrabold text-[#F5F3EE]">{member.name}</span>
-                        <span className="text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full bg-[#E2C27A]/10 text-[#E2C27A]">
+                        <span className="text-xs font-bold text-[#F5F3EE] font-georgia">{member.name}</span>
+                        <span className="text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full bg-[#E2C27A]/10 text-[#E2C27A] font-georgia">
                           {member.tier}
                         </span>
                       </div>
@@ -103,15 +103,15 @@ export default function TopTab({ profile }: TopTabProps) {
 
               {/* User's position inside the Leaderboard (Simulated rank #14) */}
               <div 
-                className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-5 rounded-[20px] bg-gradient-to-r from-[#F5F3EE] to-[#2A2A2A] text-white border-2 border-[#E2C27A]/50 shadow-lg gap-3"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-5 rounded-[20px] bg-gradient-to-r from-[#E2C27A]/25 to-[#2E220C] text-white border-2 border-[#E2C27A]/50 shadow-lg gap-3"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-9 h-9 rounded-xl bg-[#E2C27A] text-[#F5F3EE] font-black font-manrope text-xs flex items-center justify-center shrink-0 animate-pulse">
+                  <div className="w-9 h-9 rounded-xl bg-[#E2C27A] text-[#2E220C] font-black font-manrope text-xs flex items-center justify-center shrink-0 animate-pulse">
                     #14
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-extrabold text-[#242321]">{profile.name} (Vous)</span>
+                      <span className="text-xs font-extrabold text-[#F5F3EE]">{profile.name} (Vous)</span>
                       <span className="text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full bg-[#E2C27A] text-[#F5F3EE]">
                         {profile.tier}
                       </span>
@@ -153,7 +153,7 @@ export default function TopTab({ profile }: TopTabProps) {
 
             <div className="space-y-3">
               {TOP_PROJECTS.map((proj, idx) => (
-                <div key={idx} className="p-4 rounded-xl bg-[#242321] border border-[#E2C27A]/5 space-y-2">
+                <div key={idx} className="p-4 rounded-xl bg-[#2E220C] border border-[#E2C27A]/5 space-y-2">
                   <div className="flex justify-between items-start">
                     <div>
                       <p className="text-xs font-black text-[#F5F3EE]">{proj.name}</p>
@@ -177,7 +177,7 @@ export default function TopTab({ profile }: TopTabProps) {
           </div>
 
           {/* Member Privileges Card */}
-          <div className="glass-card p-6 rounded-[24px] bg-[#1A1917] text-white space-y-4 border border-[#E2C27A]/30">
+          <div className="glass-card p-6 rounded-[24px] bg-[#2E220C] text-white space-y-4 border border-[#E2C27A]/30">
             <h4 className="text-xs font-black text-[#C8A25D] uppercase tracking-wider flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4" /> Garantie Club d'Élite
             </h4>

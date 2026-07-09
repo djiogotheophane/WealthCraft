@@ -4,6 +4,7 @@
 @theme {
   --font-sans: "Poppins", "Manrope", "Inter", sans-serif;
   --font-manrope: "Manrope", sans-serif;
+  --font-georgia: "Georgia", Georgia, serif;
 }
 
 /* Custom styling for premium gold shine and glassmorphism */
@@ -19,13 +20,13 @@
   }
   
   .glass-card {
-    background: #242321;
+    background: #3D2E14;
     border: 1px solid rgba(226, 194, 122, 0.15);
     color: #F5F3EE;
   }
   
   .glass-card-dark {
-    background: #1A1917;
+    background: #2E220C;
     border: 1px solid rgba(226, 194, 122, 0.25);
     color: #F5F3EE;
   }
@@ -38,7 +39,7 @@
 /* Base style resets and customizations */
 body {
   font-family: var(--font-sans);
-  background-color: #1A1917;
+  background-color: #2E220C;
   color: #F5F3EE;
 }
 
@@ -48,7 +49,7 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #1A1917;
+  background: #2E220C;
 }
 ::-webkit-scrollbar-thumb {
   background: #E2C27A;

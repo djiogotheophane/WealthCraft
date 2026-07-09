@@ -60,14 +60,14 @@ export default function ReferralTab({ referrals, profile, onInviteFriend, onSimu
       {/* Referral Banner Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Banner (2 cols) */}
-        <div className="lg:col-span-2 relative overflow-hidden bg-gradient-to-br from-[#F5F3EE] to-[#2B2B2B] text-white p-6 md:p-8 rounded-[24px] shadow-md border border-[#E2C27A]/20 flex flex-col justify-between">
+        <div className="lg:col-span-2 relative overflow-hidden bg-gradient-to-br from-[#E2C27A]/25 to-[#2E220C] text-white p-6 md:p-8 rounded-[24px] shadow-md border border-[#E2C27A]/20 flex flex-col justify-between">
           
           <div className="space-y-3 z-10">
             <div className="inline-flex items-center gap-1.5 bg-[#E2C27A]/20 text-[#C8A25D] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-[#E2C27A]/30">
               <Sparkles className="w-3.5 h-3.5" />
               Offre Premium Parrainage
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#242321] font-manrope">
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#F5F3EE] font-manrope">
               Invitez des amis. <br />Gagnez de l'or ensemble.
             </h2>
             <p className="text-gray-300 text-xs max-w-lg leading-relaxed">
@@ -133,7 +133,7 @@ export default function ReferralTab({ referrals, profile, onInviteFriend, onSimu
             </div>
           </div>
 
-          <div className="bg-[#242321] p-3 rounded-xl border border-[#E2C27A]/15 mt-4 text-[11px] text-[#B8B2A8] leading-relaxed">
+          <div className="bg-[#2E220C] p-3 rounded-xl border border-[#E2C27A]/15 mt-4 text-[11px] text-[#B8B2A8] leading-relaxed">
             <TrendingUp className="w-4 h-4 text-[#E2C27A] inline mr-1" />
             Votre taux de conversion de parrainage est excellent. Invitez plus d'amis pour débloquer le tier <strong className="text-[#E2C27A]">Diamond</strong>.
           </div>
@@ -170,7 +170,7 @@ export default function ReferralTab({ referrals, profile, onInviteFriend, onSimu
                   {referrals.map((ref) => {
                     const isActive = ref.status.includes('Actif');
                     return (
-                      <tr key={ref.id} className="text-xs hover:bg-[#242321]/80 transition-all">
+                      <tr key={ref.id} className="text-xs hover:bg-[#2E220C]/80 transition-all">
                         <td className="py-3 px-2">
                           <p className="font-bold text-[#F5F3EE]">{ref.name}</p>
                           <p className="text-[10px] text-gray-400 font-mono">{ref.email}</p>
@@ -193,7 +193,7 @@ export default function ReferralTab({ referrals, profile, onInviteFriend, onSimu
                           {!isActive ? (
                             <button
                               onClick={() => onSimulateFirstInvestment(ref.id)}
-                              className="bg-[#1A1917] hover:bg-[#E2C27A] text-white hover:text-white text-[10px] font-bold py-1 px-3 rounded-lg transition-colors cursor-pointer"
+                              className="bg-[#2E220C] hover:bg-[#E2C27A] text-white hover:text-white text-[10px] font-bold py-1 px-3 rounded-lg transition-colors cursor-pointer"
                               title="Faire réaliser le premier investissement au filleul, vous accordant le bonus"
                             >
                               Activer 1er Investissement
@@ -229,7 +229,7 @@ export default function ReferralTab({ referrals, profile, onInviteFriend, onSimu
                 placeholder="Ex: Sophie Martin" 
                 value={friendName}
                 onChange={(e) => setFriendName(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-white text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                className="w-full px-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                 required
               />
             </div>
@@ -241,7 +241,7 @@ export default function ReferralTab({ referrals, profile, onInviteFriend, onSimu
                 placeholder="Ex: sophie.martin@example.com" 
                 value={friendEmail}
                 onChange={(e) => setFriendEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-white text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                className="w-full px-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-semibold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                 required
               />
             </div>

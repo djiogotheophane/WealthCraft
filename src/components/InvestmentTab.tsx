@@ -101,8 +101,8 @@ export default function InvestmentTab({
       {/* Top Section Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-[#E2C27A]/10 pb-5 gap-4">
         <div>
-          <h2 className="text-2xl md:text-3xl font-black text-[#F5F3EE] font-manrope tracking-tight">Espace Gagner</h2>
-          <p className="text-xs text-[#B8B2A8] mt-1">Générez de hauts rendements via nos investissements d'élite.</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F5F3EE] font-georgia tracking-tight">Espace Gagner</h2>
+          <p className="text-xs text-[#B8B2A8] mt-1 font-georgia font-bold italic">Générez de hauts rendements via nos investissements d'élite.</p>
         </div>
       </div>
 
@@ -115,8 +115,8 @@ export default function InvestmentTab({
               onClick={() => setSelectedCategory(cat.id as any)}
               className={`px-4 py-2 rounded-full text-xs font-semibold cursor-pointer transition-all border ${
                 selectedCategory === cat.id 
-                  ? 'bg-[#1A1917] text-white border-[#F5F3EE]' 
-                  : 'bg-[#242321] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/50'
+                  ? 'bg-[#2E220C] text-white border-[#F5F3EE]' 
+                  : 'bg-[#3D2E14] text-[#B8B2A8] border-[#E2C27A]/20 hover:border-[#E2C27A]/50'
               }`}
             >
               {cat.label}
@@ -143,8 +143,8 @@ export default function InvestmentTab({
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           referrerPolicy="no-referrer"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917] via-transparent to-transparent opacity-85" />
-                        <div className="absolute top-3 left-3 p-2 bg-[#1A1917]/80 backdrop-blur-md rounded-xl border border-[#E2C27A]/20">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#2E220C] via-transparent to-transparent opacity-85" />
+                        <div className="absolute top-3 left-3 p-2 bg-[#2E220C]/80 backdrop-blur-md rounded-xl border border-[#E2C27A]/20">
                           {getCategoryIcon(asset.category)}
                         </div>
                       </div>
@@ -160,14 +160,14 @@ export default function InvestmentTab({
                           </div>
                         )}
 
-                        <h3 className="font-bold text-base text-[#F5F3EE] group-hover:text-[#E2C27A] transition-colors font-manrope">
+                        <h3 className="font-bold text-base text-[#F5F3EE] group-hover:text-[#E2C27A] transition-colors font-georgia">
                           {asset.name}
                         </h3>
                         <p className="text-xs text-[#B8B2A8] mt-2 line-clamp-2">
                           {asset.description}
                         </p>
 
-                        <div className="grid grid-cols-3 gap-2 my-4 bg-[#242321] p-3 rounded-xl border border-[#E2C27A]/10">
+                        <div className="grid grid-cols-3 gap-2 my-4 bg-[#3D2E14] p-3 rounded-xl border border-[#E2C27A]/10">
                           <div>
                             <p className="text-[9px] text-[#B8B2A8] uppercase tracking-wider font-semibold">Gain / Jour</p>
                             <p className="text-xs font-extrabold text-[#E2C27A]">{asset.dailyReturn?.toLocaleString('fr-FR')} F</p>
@@ -195,7 +195,7 @@ export default function InvestmentTab({
 
                         <button
                           onClick={() => handleSimulate(asset)}
-                          className="w-full bg-[#E2C27A] text-[#1A1917] hover:bg-[#C8A25D] font-semibold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition-all glow-btn cursor-pointer"
+                          className="w-full bg-[#E2C27A] text-[#2E220C] hover:bg-[#C8A25D] font-semibold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition-all glow-btn cursor-pointer"
                         >
                           Investir maintenant
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -214,8 +214,8 @@ export default function InvestmentTab({
               <div className="glass-card p-6 rounded-[24px] border border-[#E2C27A]/30 space-y-6 sticky top-4 animate-fade-in">
                 <div className="flex justify-between items-start">
                   <div>
-                    <span className="text-[10px] font-bold text-[#E2C27A] uppercase tracking-wider">Configuration de Placement</span>
-                    <h3 className="text-lg font-bold text-[#F5F3EE] font-manrope">{selectedAsset.name}</h3>
+                    <span className="text-[10px] font-bold text-[#E2C27A] uppercase tracking-wider font-georgia">Configuration de Placement</span>
+                    <h3 className="text-lg font-bold text-[#F5F3EE] font-georgia">{selectedAsset.name}</h3>
                   </div>
                   <button 
                     onClick={() => setSelectedAsset(null)}
@@ -233,11 +233,11 @@ export default function InvestmentTab({
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E220C]/60 to-transparent" />
                   </div>
                 )}
 
-                <div className="p-4 rounded-xl bg-[#242321] border border-[#E2C27A]/15 space-y-2 text-xs">
+                <div className="p-4 rounded-xl bg-[#2E220C] border border-[#E2C27A]/15 space-y-2 text-xs">
                   <p className="text-[#B8B2A8] leading-relaxed italic">{selectedAsset.longDescription}</p>
                   <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#E2C27A]/10 font-semibold">
                     <div>Gain par jour : <span className="text-[#E2C27A] font-extrabold">{selectedAsset.dailyReturn?.toLocaleString('fr-FR')} F CFA</span></div>
@@ -277,7 +277,7 @@ export default function InvestmentTab({
                     const totalReturn = daily * days;
                     const netGains = totalReturn - cost;
                     return (
-                      <div className="p-4 rounded-xl bg-[#1A1917] text-white space-y-2.5 relative overflow-hidden">
+                      <div className="p-4 rounded-xl bg-[#2E220C] text-white space-y-2.5 relative overflow-hidden">
                         <div className="flex justify-between items-center text-xs">
                           <span className="text-gray-400">Rendements du Placement</span>
                           <span className="text-[10px] font-bold text-[#C8A25D] flex items-center gap-1">
@@ -326,7 +326,7 @@ export default function InvestmentTab({
                       value={investInputAmount}
                       onChange={(e) => setInvestInputAmount(e.target.value)}
                       placeholder={`Montant d'investissement (min: ${selectedAsset.minInvestment})`}
-                      className="w-full pl-8 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-white text-xs font-bold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
+                      className="w-full pl-8 pr-4 py-3 rounded-xl border border-[#E2C27A]/20 bg-[#2E220C] text-xs font-bold text-[#F5F3EE] focus:outline-none focus:border-[#E2C27A]"
                     />
                   </div>
 
@@ -375,7 +375,7 @@ export default function InvestmentTab({
                     Sélectionnez l'un de nos plans de placement ci-contre pour estimer vos profits futurs et configurer votre investissement.
                   </p>
                 </div>
-                <div className="bg-[#242321] p-3 rounded-xl border border-[#E2C27A]/10 text-left space-y-2 max-w-xs mx-auto">
+                <div className="bg-[#3D2E14] p-3 rounded-xl border border-[#E2C27A]/10 text-left space-y-2 max-w-xs mx-auto">
                   <div className="flex items-center gap-2 text-[10px] font-bold text-[#E2C27A] uppercase tracking-wider">
                     <Info className="w-3.5 h-3.5" /> Astuce de gestion
                   </div>

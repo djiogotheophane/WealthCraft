@@ -1304,6 +1304,17 @@ async function startServer() {
   // Initialize DB on server start
   readDB();
 
+  // Global error handler middleware to catch any asynchronous or synchronous failures
+  // in backend routes and return clean JSON error payloads instead of Express HTML pages.
+  app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error("Unhandled server error:", err);
+    res.setHeader("Content-Type", "application/json");
+    res.status(err.status || 500).json({
+      success: false,
+      error: err.message || "Une erreur interne du serveur est survenue."
+    });
+  });
+
   // Vite development server / production bundler setup
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
@@ -1314,7 +1325,7 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
-    app.get("*all", (req, res) => {
+    app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
