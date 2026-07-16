@@ -128,8 +128,8 @@ export default function TopTab({ profile }: TopTabProps) {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-[9px] uppercase tracking-wider text-gray-400">Rendement Prévu</p>
-                    <p className="text-xs font-extrabold text-[#19B37A]">11.2% p.a.</p>
+                    <p className="text-[9px] uppercase tracking-wider text-gray-400">Statut Membre</p>
+                    <p className="text-xs font-extrabold text-[#19B37A]">Actif</p>
                   </div>
                 </div>
               </div>
@@ -168,8 +168,8 @@ export default function TopTab({ profile }: TopTabProps) {
                     <span className="font-bold text-[#F5F3EE]">{proj.backers}</span>
                   </div>
                   <div className="flex justify-between items-center text-[10px]">
-                    <span className="text-[#B8B2A8]">Rendement :</span>
-                    <span className="font-extrabold text-[#19B37A]">{proj.yield}</span>
+                    <span className="text-[#B8B2A8]">Sélection :</span>
+                    <span className="font-extrabold text-[#E2C27A]">Premium</span>
                   </div>
                 </div>
               ))}

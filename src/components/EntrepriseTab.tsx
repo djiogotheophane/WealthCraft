@@ -69,8 +69,8 @@ export default function EntrepriseTab() {
               <div className="p-3 bg-[#1A1917]/50 rounded-xl border border-[#E2C27A]/5 flex items-start gap-3">
                 <TrendingUp className="w-4 h-4 text-[#E2C27A] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-bold text-[#F5F3EE]">Rendement Optimisé</h4>
-                  <p className="text-[10px] text-[#B8B2A8] mt-0.5">Sélection rigoureuse des actifs avec un rendement ciblé allant jusqu'à 14.2% p.a.</p>
+                  <h4 className="text-xs font-bold text-[#F5F3EE]">Gestion de Patrimoine</h4>
+                  <p className="text-[10px] text-[#B8B2A8] mt-0.5">Sélection rigoureuse d'actifs exclusifs et de prestiges de premier plan.</p>
                 </div>
               </div>
 
@@ -213,7 +213,7 @@ export default function EntrepriseTab() {
               <span className="text-xs font-black text-[#E2C27A] font-manrope">2022</span>
               <h4 className="text-xs font-extrabold text-[#F5F3EE] font-manrope">Premier Projet d'Élite : Monaco Azure</h4>
               <p className="text-[11px] text-[#B8B2A8] leading-relaxed">
-                WealthCraft clôture avec succès son tout premier tour de table pour la co-acquisition d'une villa de prestige surplombant la baie de Monaco. Le projet réunit 120 investisseurs privés pionniers et distribue ses premiers rendements trimestriels à hauteur de 12.4% net l'an.
+                WealthCraft clôture avec succès son tout premier tour de table pour la co-acquisition d'une villa de prestige surplombant la baie de Monaco. Le projet réunit 120 investisseurs privés pionniers pour ce placement d'exception historique.
               </p>
             </div>
           </div>

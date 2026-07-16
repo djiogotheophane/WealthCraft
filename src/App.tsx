@@ -85,14 +85,28 @@ export default function App() {
   // Synchronize authentication and profile state on startup / token change
   useEffect(() => {
     const fetchMe = async () => {
-      if (!token) {
-        setLoading(false);
-        return;
+      let currentToken = token;
+      
+      if (!currentToken) {
+        try {
+          const autoRes = await fetch('/api/auth/auto', { method: 'POST' });
+          const autoData = await handleApiResponse(autoRes);
+          if (autoData.token) {
+            localStorage.setItem('wealthcraft_token', autoData.token);
+            setToken(autoData.token);
+            currentToken = autoData.token;
+          }
+        } catch (autoErr) {
+          console.error("Auto authentication failed:", autoErr);
+          setLoading(false);
+          return;
+        }
       }
+
       try {
         const response = await fetch('/api/auth/me', {
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${currentToken}`
           }
         });
         const data = await handleApiResponse(response);
@@ -459,13 +473,6 @@ export default function App() {
                   {profile.tier}
                 </span>
               </div>
-              <button 
-                onClick={handleLogout}
-                className="hidden sm:flex items-center justify-center p-2.5 bg-red-50 text-red-600 border border-red-100/50 hover:bg-red-100 hover:text-red-700 rounded-xl transition-all shadow-sm cursor-pointer active:scale-95"
-                title="Se déconnecter"
-              >
-                <LogOut className="w-4 h-4" />
-              </button>
             </div>
           </div>
         </div>
@@ -490,9 +497,9 @@ export default function App() {
               {/* Grid of Navigation Tabs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { id: 'dashboard', label: 'Tableau de Bord', desc: 'Vue d\'ensemble de votre patrimoine d\'élite, plus-values et performances.', icon: <Wallet className="w-5 h-5" /> },
-                  { id: 'gagner', label: 'Gagner', desc: 'Placements de co-investment haut rendement.', icon: <Building className="w-5 h-5" /> },
-                  { id: 'top', label: 'Top', desc: 'Le Cercle d\'Or — Classement d\'élite des investisseurs et performances.', icon: <Award className="w-5 h-5" /> },
+                  { id: 'dashboard', label: 'Tableau de Bord', desc: 'Vue d\'ensemble de votre patrimoine d\'élite et de vos transactions.', icon: <Wallet className="w-5 h-5" /> },
+                  { id: 'gagner', label: 'Gagner', desc: 'Placements de co-investissement d\'exception.', icon: <Building className="w-5 h-5" /> },
+                  { id: 'top', label: 'Top', desc: 'Le Cercle d\'Or — Classement d\'élite des investisseurs.', icon: <Award className="w-5 h-5" /> },
                   { id: 'inviter', label: 'Inviter', desc: 'Partagez votre lien de parrainage de prestige pour recevoir des primes.', icon: <Users className="w-5 h-5" /> },
                   { id: 'retrait', label: 'Retrait', desc: 'Transférez vos gains disponibles en toute sécurité vers vos comptes.', icon: <ArrowUpRight className="w-5 h-5" /> },
                   { id: 'entreprise', label: 'Notre Profil & Histoire', desc: 'Découvrez l\'histoire de la maison WealthCraft, notre objectif et notre vision.', icon: <Building className="w-5 h-5" /> }
@@ -532,13 +539,6 @@ export default function App() {
                   <span className="w-2.5 h-2.5 bg-[#19B37A] rounded-full animate-pulse"></span>
                   <span className="text-[10px] uppercase font-bold text-[#B8B2A8]">Session Sécurisée d'Élite</span>
                 </div>
-                <button 
-                  onClick={handleLogout}
-                  className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-sm border border-red-200/40 active:scale-95"
-                >
-                  <LogOut className="w-4 h-4" />
-                  <span>Se déconnecter</span>
-                </button>
               </div>
             </div>
           </div>

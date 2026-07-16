@@ -142,9 +142,6 @@ export default function DashboardTab({ profile, onNavigate, onOpenDeposit, onWin
           <p className="text-2xl md:text-3xl font-extrabold text-[#F5F3EE] font-manrope mt-2">
             {formatEUR(totalWealth)}
           </p>
-          <div className="mt-2 flex items-center gap-1.5 text-[#19B37A] text-xs font-semibold">
-            <span className="bg-[#19B37A]/10 px-2 py-0.5 rounded-full border border-[#19B37A]/20">+8.4% ce mois</span>
-          </div>
         </div>
 
         {/* Stat 2: Active Investments */}

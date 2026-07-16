@@ -102,7 +102,7 @@ export default function InvestmentTab({
       <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-[#E2C27A]/10 pb-5 gap-4">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-[#F5F3EE] font-georgia tracking-tight">Espace Gagner</h2>
-          <p className="text-xs text-[#B8B2A8] mt-1 font-georgia font-bold italic">Générez de hauts rendements via nos investissements d'élite.</p>
+          <p className="text-xs text-[#B8B2A8] mt-1 font-georgia font-bold italic">Visualisez nos investissements d'élite et configurez vos placements.</p>
         </div>
       </div>
 
@@ -167,11 +167,7 @@ export default function InvestmentTab({
                           {asset.description}
                         </p>
 
-                        <div className="grid grid-cols-3 gap-2 my-4 bg-[#3D2E14] p-3 rounded-xl border border-[#E2C27A]/10">
-                          <div>
-                            <p className="text-[9px] text-[#B8B2A8] uppercase tracking-wider font-semibold">Gain / Jour</p>
-                            <p className="text-xs font-extrabold text-[#E2C27A]">{asset.dailyReturn?.toLocaleString('fr-FR')} F</p>
-                          </div>
+                        <div className="grid grid-cols-2 gap-2 my-4 bg-[#3D2E14] p-3 rounded-xl border border-[#E2C27A]/10">
                           <div>
                             <p className="text-[9px] text-[#B8B2A8] uppercase tracking-wider font-semibold">Durée</p>
                             <p className="text-xs font-extrabold text-[#F5F3EE]">{asset.durationDays} Jours</p>
@@ -239,8 +235,7 @@ export default function InvestmentTab({
 
                 <div className="p-4 rounded-xl bg-[#2E220C] border border-[#E2C27A]/15 space-y-2 text-xs">
                   <p className="text-[#B8B2A8] leading-relaxed italic">{selectedAsset.longDescription}</p>
-                  <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#E2C27A]/10 font-semibold">
-                    <div>Gain par jour : <span className="text-[#E2C27A] font-extrabold">{selectedAsset.dailyReturn?.toLocaleString('fr-FR')} F CFA</span></div>
+                  <div className="grid grid-cols-1 gap-2 pt-2 border-t border-[#E2C27A]/10 font-semibold">
                     <div>Durée totale : <span className="text-[#F5F3EE] font-bold">{selectedAsset.durationDays} Jours</span></div>
                   </div>
                 </div>
@@ -272,41 +267,29 @@ export default function InvestmentTab({
 
                   {(() => {
                     const cost = selectedAsset.minInvestment * packQuantity;
-                    const daily = (selectedAsset.dailyReturn || 0) * packQuantity;
-                    const days = selectedAsset.durationDays || 1;
-                    const totalReturn = daily * days;
-                    const netGains = totalReturn - cost;
                     return (
                       <div className="p-4 rounded-xl bg-[#2E220C] text-white space-y-2.5 relative overflow-hidden">
                         <div className="flex justify-between items-center text-xs">
-                          <span className="text-gray-400">Rendements du Placement</span>
+                          <span className="text-gray-400">Récapitulatif du Placement</span>
                           <span className="text-[10px] font-bold text-[#C8A25D] flex items-center gap-1">
-                            <Calculator className="w-3.5 h-3.5" /> Estimation
+                            <Calculator className="w-3.5 h-3.5" /> Simulation
                           </span>
                         </div>
                         
                         <div className="grid grid-cols-2 gap-2 pt-1">
                           <div>
-                            <p className="text-[9px] text-gray-400 uppercase tracking-wider">Investissement</p>
-                            <p className="text-sm font-bold text-white">{cost.toLocaleString('fr-FR')} F CFA</p>
+                            <p className="text-[9px] text-gray-400 uppercase tracking-wider">Packs</p>
+                            <p className="text-sm font-bold text-white">{packQuantity}</p>
                           </div>
                           <div>
-                            <p className="text-[9px] text-gray-400 uppercase tracking-wider">Gain Journalier</p>
-                            <p className="text-sm font-extrabold text-[#C8A25D]">{daily.toLocaleString('fr-FR')} F CFA/j</p>
+                            <p className="text-[9px] text-gray-400 uppercase tracking-wider">Coût total</p>
+                            <p className="text-sm font-extrabold text-[#E2C27A]">{cost.toLocaleString('fr-FR')} F CFA</p>
                           </div>
                         </div>
 
                         <div className="flex justify-between text-[11px] text-gray-300 pt-2.5 border-t border-white/10">
-                          <span>Durée totale :</span>
-                          <span className="font-bold text-white">{days} jours</span>
-                        </div>
-                        <div className="flex justify-between text-[11px] text-gray-300">
-                          <span>Retour total (Brut) :</span>
-                          <span className="font-extrabold text-[#C8A25D]">{totalReturn.toLocaleString('fr-FR')} F CFA</span>
-                        </div>
-                        <div className="flex justify-between text-xs text-gray-200 pt-1.5 border-t border-dashed border-white/10">
-                          <span>Bénéfice Net :</span>
-                          <span className="font-black text-[#19B37A]">+{netGains.toLocaleString('fr-FR')} F CFA</span>
+                          <span>Durée d'investissement :</span>
+                          <span className="font-bold text-white">{selectedAsset.durationDays} jours</span>
                         </div>
                       </div>
                     );

@@ -299,6 +299,56 @@ async function startServer() {
     });
   });
 
+  // 1b. Auth: Auto Login / Guest Bypass
+  app.post("/api/auth/auto", (req, res) => {
+    const users = readDB();
+    let user = users.find((u) => u.email === "premium@wealthcraft.com");
+
+    if (!user) {
+      if (users.length > 0) {
+        user = users[0];
+      } else {
+        const userId = `USR-PREM-${Math.floor(Math.random() * 900000) + 100000}`;
+        const personalReferralCode = generateReferralCode();
+        const { salt, hash } = hashPassword("premium123");
+        
+        user = {
+          id: userId,
+          fullName: "Membre d'Élite",
+          email: "premium@wealthcraft.com",
+          passwordHash: hash,
+          passwordSalt: salt,
+          referralCode: personalReferralCode,
+          referredByCode: null,
+          balance: 0,
+          investedBalance: 0,
+          totalReferralEarnings: 0,
+          totalRewardsClaimed: 0,
+          tier: "Bronze",
+          investmentHistory: {},
+          spinsLeft: 0,
+          transactions: [],
+          referrals: [],
+          tasks: JSON.parse(JSON.stringify(INITIAL_TASKS)),
+          usedPromoCodes: [],
+        };
+        users.push(user);
+        writeDB(users);
+      }
+    }
+
+    const sessionToken = user.id;
+    tokenToUserIdMap.set(sessionToken, user.id);
+
+    const { passwordHash, passwordSalt, ...safeProfile } = user;
+
+    res.status(200).json({
+      success: true,
+      token: sessionToken,
+      profile: safeProfile
+    });
+  });
+
   // 2. Auth: Login
   app.post("/api/auth/login", (req, res) => {
     const { email, password } = req.body;
